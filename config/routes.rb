@@ -13,7 +13,7 @@ end
 
 namespace :admin do
   root to: 'homes#top'
-  resources :genres, except: [:destory]
+  resources :genres, except: [:destory, :show]
 end
 
 end

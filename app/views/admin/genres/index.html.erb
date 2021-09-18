@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+ <div class="container px-5 px-sm-0">
+   <div class="row justify-content-md-center">
+     <h2>ジャンル一覧画面</h2>
+   </div>
+   <div class="row">
+     <% @genres.each do |genre| %>
+    <div class="row card offset-1">
+     <div class="card-body">
+       <h5 class="card-title"><%=genre.name %></h5>
+       <p class="card-image"><%= image_tag genre.image.variant(resize:'250x250').processed %></p>
+       <p class="card-btn"><%=link_to"編集ページへ", edit_admin_genre_path(genre), class:"btn btn-lg btn btn-primary" %>
+     </div>
+    </div>
+     <% end %>
+   </div></br>
+   <strong><%=link_to "新規登録はこちらから", new_admin_genre_path(@genre), class:"text-info" %></strong>
+ </div>
+

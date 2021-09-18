@@ -3,7 +3,7 @@
     <div class="row justify-content-md-center">
        <h2>ジャンル新規登録画面</h2>
     </div><br />
-  <%= form_with model: @genre, url: admin_genres_path(@genre), local: true do |f| %>
+  <%= form_with model: @genre, url: admin_genre_path(@genre), local: true do |f| %>
     <div class="row justify-content-md-center">
       <div class="form-group col-md-3">
         <h4><%= f.label :genre, "ジャンル名" %></h4>
@@ -18,11 +18,7 @@
     </div>
     <div class="row justify-content-md-center">
       <div class="form-group col-md-2">
-        <%= f.submit '新規登録', class:"btn btn-lg btn-block btn-primary mt-3" %>
+        <%= f.submit '更新', class:"btn btn-lg btn-block btn-primary mt-3" %>
       </div>
     </div>
   <% end %>
-
-
-
-
