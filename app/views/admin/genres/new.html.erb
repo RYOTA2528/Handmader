@@ -1,0 +1,28 @@
+<p id="notice"></p>
+  <div class="container px-5 px-sm-0">
+    <div class="row justify-content-md-center">
+       <h2>ジャンル新規登録画面</h2>
+    </div>
+  <%= form_with model: @genre, url: admin_genres_path(@genre), local: true do |f| %>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-2">
+        <h4><%= f.label :genre, "ジャンル名" %></h4>
+        <%= f.text_field :name, class:"form-control", placeholder:"(例)アクセサリー" %><br/>
+      </div>
+     </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group">
+        <h4><%= f.label :genre, "ジャンルイメージ画像" %></h4><br/>
+            <%= f.file_field :image %>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-2">
+        <%= f.submit '新規登録', class:"btn btn-lg btn-block btn-primary mt-3" %>
+      </div>
+    </div>
+  <% end %>
+
+
+
+
