@@ -1,0 +1,31 @@
+<p id="notice"></p>
+  <div class="container px-5 px-sm-0">
+    <div class="row justify-content-md-center">
+       <h2>プロフィール編集画面</h2>
+    </div><br />
+  <%= form_with model: @user, url: public_user_path(@user.id) ,method: :patch, local:true do |f| %>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-3">
+        <h4><%= f.label :nickname, "ニックネーム" %></h4>
+        <%= f.text_field :nickname, class:"form-control", placeholder:"(例)はんぺん" %><br/>
+      </div>
+     </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group">
+        <h4><%= f.label :profile, "自己紹介" %></h4>
+         <%= f.text_area :profile, rows:'5',cols:'80',placeholder: "(例)アクセサリー中心で投稿してます。宜しくお願い致します！" %><br />
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group">
+        <h4><%= f.label :avator, "アバター画像" %></h4><br/>
+            <%= f.file_field :avator %>
+      </div>
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="form-group col-md-2">
+        <%= f.submit '更新', class:"btn btn-lg btn-block btn-primary mt-3" %>
+      </div>
+    </div>
+  <% end %>
+  </div>

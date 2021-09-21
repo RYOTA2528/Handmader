@@ -1,0 +1,12 @@
+<div class="container px-5 px-sm-0">
+  <div class="row justify-content-md-center">
+    <h2>退会画面</h2>
+  </div><br />
+  <div class="row justify-content-md-center">
+    <h3>本当に退会されますか？</h3>
+    <h3>退会された場合は、会員情報・投稿データ共に削除されます。</h3>
+  </div>
+  <div>
+    <%= link_to '退会しない', public_users_path(@user),class:"btn btn-lg btn-success mt-4 col-md-3" %>
+    <%= link_to "退会する", customers_withdraw_path(@user), method: :patch, data: {confirm: "本当に退会しますか？"},  class:"btn btn-lg btn-warning mt-4 col-md-3"%>
+  </div>

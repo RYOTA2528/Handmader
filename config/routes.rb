@@ -1,19 +1,35 @@
 Rails.application.routes.draw do
 
-  devise_for :admins, skip: :all
-  devise_scope :admin do
-  get '/admin/sign_in' => 'admin/sessions#new', as: :new_admin_session
-  post '/admin/sign_in' => 'admin/sessions#create', as: :admin_session
-  delete 'admin/sign_out' => 'admin/sessions#destroy', as: :destroy_admin_session
-  get '/admin/password/new' => 'admin/passwords#new', as: :new_admin_password
-  get '/admin/password/edit' => 'admin/password#edit', as: :edit_admin_password
-  patch '/admin/password' => 'admin/passwords#update', as: :update_admin_password
-  post '/admin/password/new' => 'admin/passwors#create', as: :create_admin_password
-end
+   devise_for :users, controllers: {
+     registrations: 'public/users/registrations',
+     sessions: 'public/users/sessions',
+     passwords: 'public/users/passwords',
+   }
+
+   root to: 'homes#about'
+
+  devise_for :admins, controllers: {
+     sessions: 'admin/sessions',
+     passwords: 'admin/passwords'
+   }
+
+
 
 namespace :admin do
-  root to: 'homes#top'
+  get  '/', to: 'homes#top'
   resources :genres, except: [:destory, :show]
+  resources :users, only: [:show, :edit, :update]
+end
+
+namespace :public do
+  get '/', to: 'homes#top'
+  resources :users, only: [:new, :create, :show, :edit, :update]
+  #   devise_for :users, controllers: {
+  #   registrations: 'users/registrations',
+  #   sessions: 'users/sessions'
+  # }
+  get 'users/unsubscribe', to: 'users#unsubscribe'
+  patch 'users/withdraw', to: 'users#withdraw'
 end
 
 end

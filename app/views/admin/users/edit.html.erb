@@ -1,0 +1,44 @@
+   <% if @user.errors.any? %>
+  <%= @user.errors.count %>error prohibited this obj from being saved:
+  <% @user.errors.full_messages.each do |message| %>
+  <%= message %>
+  <% end %>
+  <% end %>
+<h2><span><%= @user.name %>さんの編集画面</h2>
+<div class="row justify-content-md-center">
+  <%= form_with model: @user, url: admin_user_path(@user.id) , local: true do |f| %>
+  <div class="row justify-content-md-center">
+    <div class="form-group form-inline" >
+       <%= f.label :名前, class:"col" %>
+        <%= f.text_field :name, class:"form-control"%>
+     </div><br />
+   </div>
+   <div class="row justify-content-md-center">
+     <div class="form-group form-inline" >
+      <%= f.label :ニックネーム, class:"col" %>
+      <%= f.text_field :nickname, class:"form-control" %>
+     </div><br />
+   </div>
+   <div class="row justify-content-md-center">
+     <div class="form_group form-inline">
+      <%= f.label :メールアドレス, class:"col" %>
+      <%= f.text_field :email, class:"form-control"%>
+     </div>
+   </div><br />
+   <div class="row justify-content-md-center">
+     <div class="form_group form-inline">
+      <%= f.label :会員ステータス, class:"col-3 " %><br />
+      <%= f.radio_button :is_deleted, :Member, checked: true %>
+      <%= f.label :is_deleted, "有効", {value: :Member, style: "display: inline-block;"} %>
+      <%= f.radio_button :is_deleted, :Non_member %>
+      <%= f.label :is_deleted, "退会", {value: :Non_member, style: "display: inline-block;"} %>
+      </div>
+   </div><br />
+
+   <div class="actions">
+    <%= f.submit "変更を保存" %>
+   </div>
+  <% end %>
+ </div>
+</div>
+</main>
