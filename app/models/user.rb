@@ -10,6 +10,9 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
   #今回は現会員＝false(db上でもdefault値をfalseにて登録)、退会ユーザー（Non_member）をtrueとしてる
-  enum is_deleted: {Member: false, Non_member: true}
+
+   def active_for_authentication?
+     super && (self.is_deleted == false)
+   end
 
 end

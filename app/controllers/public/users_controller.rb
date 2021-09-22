@@ -35,10 +35,11 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
-   @user = current_customer
+   @user = current_user
    @user.update(is_deleted: true)
    # true＝退会ユーザーです。
    reset_session
+   flash[:notice] = "ありがとうございました。またのご利用お待ちしております！"
    redirect_to root_path
   end
 

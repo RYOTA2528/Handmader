@@ -23,13 +23,9 @@ end
 
 namespace :public do
   get '/', to: 'homes#top'
+  get '/unsubscribe', to: 'users#unsubscribe'
+  patch '/withdraw', to: 'users#withdraw'
   resources :users, only: [:new, :create, :show, :edit, :update]
-  #   devise_for :users, controllers: {
-  #   registrations: 'users/registrations',
-  #   sessions: 'users/sessions'
-  # }
-  get 'users/unsubscribe', to: 'users#unsubscribe'
-  patch 'users/withdraw', to: 'users#withdraw'
 end
 
 end
