@@ -1,9 +1,9 @@
 <p id="notice"></p>
   <div class="container px-5 px-sm-0">
     <div class="row justify-content-md-center">
-       <h2>プロフィール編集画面</h2>
+       <h2>プロフィール登録画面</h2>
     </div><br />
-  <%= form_with model: @user, url: public_user_path(@user.id) ,method: :patch, local:true do |f| %>
+  <%= form_with model: @user, url: public_user_path ,method: :patch, local:true do |f| %>
     <div class="row justify-content-md-center">
       <div class="form-group col-md-3">
         <h4><%= f.label :nickname, "ニックネーム" %></h4>
@@ -18,13 +18,13 @@
     </div>
     <div class="row justify-content-md-center">
       <div class="form-group">
-        <h4><%= f.label :avator, "アバター画像" %></h4><br/>
-            <%= f.file_field :avator %>
+        <h4><%= f.label :avatar, "アバター画像" %></h4><br/>
+            <%= f.file_field :avatar %>
       </div>
     </div>
     <div class="row justify-content-md-center">
       <div class="form-group col-md-2">
-        <%= f.submit '更新', class:"btn btn-lg btn-block btn-primary mt-3" %>
+        <%= f.submit '登録', class:"btn btn-lg btn-block btn-primary mt-3" %>
       </div>
     </div>
   <% end %>

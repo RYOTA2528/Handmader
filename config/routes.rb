@@ -25,7 +25,7 @@ namespace :public do
   get '/', to: 'homes#top'
   get '/unsubscribe', to: 'users#unsubscribe'
   patch '/withdraw', to: 'users#withdraw'
-  resources :users, only: [:new, :create, :show, :edit, :update]
+  resources :users, only: [:show, :edit, :update]
 end
 
 end

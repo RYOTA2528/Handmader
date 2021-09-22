@@ -61,6 +61,6 @@ class Public::Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def after_sign_up_path_for(resource)
-    new_public_user_path
+    edit_public_user_path(current_user)
   end
 end

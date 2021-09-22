@@ -1,15 +1,5 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.find(current_user.id)
-    @user.update(user_params)
-    redirect_to public_user_path(@user)
-    flash[:notice]='プロフィールが登録されました。'
-  end
 
   def show
     @user = User.find(params[:id])
@@ -25,6 +15,7 @@ class Public::UsersController < ApplicationController
     @user = User.find(current_user.id)
     if @user.update(user_params)
       redirect_to public_user_path(@user.id)
+      flash[:notice]='プロフィールが登録されました。'
     else
       render :edit
     end
