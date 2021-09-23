@@ -10,10 +10,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body class="d-flex flex-column vh-100">
+  <% unless current_page?(root_path) %>
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-           <span><%= link_to image_tag('Handmader.PNG'), '/', class: 'navbar-brand' %></span>
+           <span><%= link_to image_tag('Handmader logo.png'), '/', class: 'navbar-brand' %></span>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -74,6 +75,7 @@
         </div>
       </nav>
     </header>
+    <% end %>
     <%= yield %>
   </body>
 </html>
