@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PostItmeTest < ActiveSupport::TestCase
+class Public::PostItemsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

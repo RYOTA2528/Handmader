@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # PostImageモデル作成後の記述。下記のようにすると現在のユーザーの投稿のみを取得できる
-    # @post_items = @user.post_items.page(params[:page]).reverse_order
+    @post_items = @user.post_items.page(params[:page]).reverse_order
   end
 
   def edit
@@ -34,8 +34,10 @@ class Public::UsersController < ApplicationController
    redirect_to root_path
   end
 
+  private
+
   def user_params
-   params.require(:user).permit(:nickname,:avatar,:profile)
+   params.require(:user).permit(:nickname,:avatar,:profile, images: [])
   end
 
 end

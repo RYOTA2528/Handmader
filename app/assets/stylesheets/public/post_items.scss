@@ -1,0 +1,13 @@
+// Place all the styles related to the public/post_items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+.box{
+  margin: 1em;
+  padding: 1em;
+  border: 5px double #ccddff;
+  border-radius: 10px;
+}

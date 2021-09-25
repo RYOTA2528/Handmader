@@ -28,8 +28,7 @@
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <!--まだ作成してないため実際は遷移できない-->
-              <%#= link_to '投稿フォーム', new_post_item_path, class: 'nav-link text-dark' %>
+              <%= link_to '投稿フォーム', new_public_post_item_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <!--まだ作成してないため実際は遷移できない-->

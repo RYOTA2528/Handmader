@@ -26,6 +26,7 @@ namespace :public do
   get '/unsubscribe', to: 'users#unsubscribe'
   patch '/withdraw', to: 'users#withdraw'
   resources :users, only: [:show, :edit, :update]
+  resources :post_items
 end
 
 end

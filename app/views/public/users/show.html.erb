@@ -1,41 +1,55 @@
 <p id="notice"><%= notice %></p>
-<div class="container px-5 px-sm-0">
-   <div class="row">
-     <h4>プロフィール画面</h4>
-   </div>
-   <div class="row">
-     <div class= col-md-5>
-       <h4 class="nickname"><%=@user.nickname %>さん</h4><br />
-       <div>
-       <% if @user.avatar.attached? %>
-       <%= image_tag @user.avatar.variant(resize:'250x250').processed %>
-       <% else %>
-       <%= image_tag ("no_image.png"),size: '250x250'  %>
-       <% end %>
+<div class="container">
+ <div class="row">
+  <div class="col-md-5">
+    <div class="container px-5 px-sm-0 col">
+       <div class="col">
+         <h4>プロフィール画面</h4>
+       </div>
+       <div class="col">
+         <h4 class="nickname"><%=@user.nickname %>さん</h4><br />
+       </div>
+       <div class="col">
+              <% if @user.avatar.attached? %>
+              <%= image_tag @user.avatar.variant(resize:'250x250').processed %>
+              <% else %>
+              <%= image_tag ("no_image.png"),size: '250x250'  %>
+              <% end %>
        </div><br />
-       <div>
-       <h4 class="profile"><%=@user.profile %></h4>
-     <div>
-      <% if @user.id == current_user.id %>
-      <%= link_to "プロフィール編集", edit_public_user_path(@user) %><br />
-      <p><%= link_to "退会する", public_unsubscribe_path(@user) %></p>
-     </div>
+       <div class="col">
+         <span>【自己紹介】</span>
+         <h4 class="profile"><%=@user.profile %></h4>
+       </div>
+       <div class="col">
+          <% if @user.id == current_user.id %>
+          <%= link_to "プロフィール編集", edit_public_user_path(@user) %><br />
+          <%= link_to "退会する", public_unsubscribe_path(@user) %><br />
+          <%= link_to '投稿フォーム', new_public_post_item_path(@user) %>
+       </div>
+          <% end %>
+      </div>
+  </div>
+  <div class-"col-md-7">
+    <div class="container px-5 px-sm-0">
+      <div class="col">
+        <h3><span>【<%= @user.nickname %>の投稿一覧】</span></h3><br />
+      </div>
+      <div class="col">
+        <% @post_items.each do |post_item| %>
+          <%= link_to  public_post_item_path(post_item.id) do %>
+            <% post_item.images.each do |image| %>
+              <%= image_tag(image, width:200, height:200 ) %>
+            <% end %>
+          <!--この中に、いいね件数・コメント件数の表示をするようにもしたい-->
+          <% end %>
+            <p>
+              作品名：<%= post_item.name %>
+            </p>
+        <% end %>
+    <!--ここに関してもPostItemモデルができな限りはページネーション不要なため保留-->
+      </div>
     </div>
-  <% end %>
-   </div>
-
-<!--これ以降は、PostItemモデル作成後にコメントアウト外し対応-->
-<%# @post_items.each do |post_item| %>
-<!--<div>-->
-  <%#= link_to post_item_path(post_image.id) do %>
-      <!--問題：作品一つならこれで大丈夫だが、複数投稿の場合、写真表示は下記で大丈夫か？？-->
-    <%#= image_tag post_item.image.variant(resize:'250x250').processed %>
-    <%#= attachment_image_tag post_image, :image %>
-    <!--この中に、いいね件数・コメント件数の表示をするようにもしたい-->
-  <%# end %>
-  <!--<p>作品名：<%#= post_item.image.name %></p>-->
-
-<%# end %>
-<!--ここに関してもPostItemモデルができな限りはページネーション不要なため保留-->
-<%#= paginate @post_items %>
+  </div>
+  <%= paginate @post_items %>
+ </div>
 </div>
