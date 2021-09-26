@@ -35,8 +35,7 @@
               <%#= link_to 'お気に入り一覧', user_favorites_path(current_user.id), class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <!--まだ作成してないため実際は遷移できない-->
-              <%#= link_to '作品一覧', user_post_items_path, class: 'nav-link text-dark' %>
+              <%= link_to 'みんなの作品一覧', public_post_items_path, class: 'nav-link text-dark' %>
             </li>
             <% elsif admin_signed_in? %>
            <li>管理者</li>

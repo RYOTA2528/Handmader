@@ -3,14 +3,14 @@
    <div class="row justify-content-md-center">
      <h4><%=@post_item.name %></h4>
    </div><br />
-    <div class="row offset-5">
+    <div class="row justify-content-md-center">
       <div class="">
         <% @post_item.images.each do |image| %>
           <%= image_tag(image, width:250) %>
         <% end %>
       </div>
     </div><br />
-    <div class="row offset-5">
+    <div class="row text-center">
       <div class="col ">
         <h4><strong><%= @post_item.name %></strong></h4>
       </div>

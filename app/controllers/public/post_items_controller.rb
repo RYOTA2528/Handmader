@@ -24,32 +24,37 @@ class Public::PostItemsController < ApplicationController
 
   def index
     @post_items = PostItem.all
+    @post_items = PostItem.limit(10).order("created_at DESC")
   end
 
   def edit
-    @post = PostItem.find(params[:id])
+    @post_item = PostItem.find(params[:id])
   end
 
   def update
-    @post_item = PostItem.find(current_user.id)
+    @post_item = PostItem.find(params[:id])
     if @post_item.update(post_item_params)
-      # redirect_to public_user_path(@user.id)
       flash[:notice]='プロフィールが登録されました。'
+       redirect_to public_user_path(current_user)
     else
       render :edit
     end
   end
 
   def destroy
+
     @post_item = PostItem.find(params[:id])
+    @post_item.images.each do |image|
+      image.purge
+    end
     @post_item.destroy
     flash[:success] = "作成しました"
-    redirect_to public_user_path(@post_item)
+    redirect_to public_user_path(current_user)
   end
 
   private
 
   def post_item_params
-   params.require(:post_item).permit(:user_id,:name,:text, images: [], genre_ids: [])
+   params.require(:post_item).permit(:user_id,:avatar,:name,:text, images: [], genre_ids: [])
   end
 end
