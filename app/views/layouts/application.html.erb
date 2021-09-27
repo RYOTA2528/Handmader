@@ -69,6 +69,11 @@
            </li>
            <% end %>
             </ul>
+            <!--検索機能（投稿作品で検索します。）-->
+            <%= search_form_for @search, url: public_post_items_path do |f| %>
+              <%= f.text_field :name_cont, placeholder: '名前を入力...' %>
+              <%= f.submit ("検索する") %>
+            <% end %>
           </div>
         </div>
       </nav>

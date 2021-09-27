@@ -22,9 +22,13 @@ class Public::PostItemsController < ApplicationController
     # @post_items = @user.post_items.page(params[:page]).reverse_order
   end
 
+
   def index
-    @post_items = PostItem.all
-    @post_items = PostItem.limit(10).order("created_at DESC")
+     @q = PostItem.ransack(params[:q])
+     @post_items = @q.result
+     @genres= Genre.all
+    # @post_items = PostItem.all
+    # @post_items = PostItem.limit(10).order("created_at DESC")
   end
 
   def edit
