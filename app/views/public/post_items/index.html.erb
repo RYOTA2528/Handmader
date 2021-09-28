@@ -1,25 +1,17 @@
 <p id="notice"><%= notice %></p>
-
-<table class="table table-bordered genre-table">
-    <thead>
-      <tr>
-        <th>ジャンル検索</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @genres.each do |genre| %>
-      <tr>
-        <td>
-          <%= link_to genre.name, public_post_items_path(genre_id: genre.id) %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-</table>
-
  <div class="container px-5 px-sm-0">
    <div class="row justify-content-md-center">
      <h3 class="title text-center">みんなの投稿一覧画面</h3>
+<%= form_tag public_post_items_path, method: :get do %>
+
+  <% @genres.each do |genre| %>
+      <div>
+        <%= link_to genre.name, public_genre_path(genre.id) %>
+      </div>
+  <% end %>
+      <div class="tag-box">
+        <%= link_to "全ての投稿一覧", public_post_items_path %>
+      </div>
    </div>
    <div class="row">
      <% @post_items.each do |post_item| %>
@@ -43,4 +35,5 @@
      </div>
      <% end %>
    </div>
+<% end %>
  </div>

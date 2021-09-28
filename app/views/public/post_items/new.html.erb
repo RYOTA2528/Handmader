@@ -3,7 +3,17 @@
     <div class="row justify-content-md-center">
       <h2>投稿</h2>
     </div><br />
+    <% if @post_item.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @post_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
   <%= form_with model: @post_item, url: public_post_items_path, method: :post, local:true do |f| %>
+  <%= f.hidden_field :post_item_id, value: @post_item.id %>
     <div class="row justify-content-md-center">
       <div class="form-group col-md-3">
        <%= f.label :images, '画像を投稿する' %>

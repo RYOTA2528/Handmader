@@ -24,11 +24,9 @@ class Public::PostItemsController < ApplicationController
 
 
   def index
-     @q = PostItem.ransack(params[:q])
-     @post_items = @q.result
      @genres= Genre.all
-    # @post_items = PostItem.all
-    # @post_items = PostItem.limit(10).order("created_at DESC")
+     @search = PostItem.ransack(params[:q])
+     @post_items = @search.result
   end
 
   def edit
@@ -55,6 +53,13 @@ class Public::PostItemsController < ApplicationController
     flash[:success] = "作成しました"
     redirect_to public_user_path(current_user)
   end
+
+   def search
+     @genres = Genre.all
+     @genre = Genre.find(params[:id])
+     @post_items = PostItem.all
+     @post_items = PostItem.limit(10).order("created_at DESC")
+   end
 
   private
 

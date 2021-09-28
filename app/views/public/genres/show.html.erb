@@ -1,3 +1,9 @@
+<div class="container px-5 px-sm-0">
+   <div class="row justify-content-md-center">
+     <h3 class="title text-center"><%= @genre.name %></h3>
+   </div>
+   <div class="row">
+     <% @post_items.each do |post_item| %>
     <div class="row card offset-1">
      <div class="card-body">
        <h5 class="card-title"><%=post_item.name %></h5>
@@ -16,8 +22,6 @@
        </div>
       </div>
      </div>
-
-
-<%= @genres.each do |genre| %>
-<%=link to genre.name, public_genres_path(genre_id: genre.id) %>
-<% end %>
+     <% end %>
+   </div>
+ </div>

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'search/search'
    devise_for :users, controllers: {
      registrations: 'public/users/registrations',
      sessions: 'public/users/sessions',
@@ -28,6 +27,7 @@ namespace :public do
   patch '/withdraw', to: 'users#withdraw'
   resources :users, only: [:show, :edit, :update]
   resources :post_items
+  resources :genres, only: [:show]
 end
 
 end
