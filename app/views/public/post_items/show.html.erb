@@ -9,6 +9,9 @@
           <%= image_tag(image, width:250) %>
         <% end %>
       </div>
+      <div id="favorite_area_<%= @post_item %>", class="favoriteArea">
+        <%= render partial: "public/favorites/favorite", locals: { post_item: @post_item } %>
+      </div>
     </div><br />
     <div class="row text-center">
       <div class="col ">

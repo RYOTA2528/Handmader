@@ -44,7 +44,12 @@
               作品名：<%= post_item.name %>
             </p>
         <% end %>
-    <!--ここに関してもPostItemモデルができな限りはページネーション不要なため保留-->
+      <% if @favorite_list.present? %>
+        <% @favorite_list.each do |post_item| %>
+          <%= post_item.name %>
+        <% end %>
+      <% end %>S
+
       </div>
     </div>
   </div>

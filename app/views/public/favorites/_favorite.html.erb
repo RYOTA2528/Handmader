@@ -1,0 +1,14 @@
+<!--trueであれば既にフォボしてるため削除ボタン、falseであればお気に入りボタン-->
+<% if current_user.already_favorited?(post_item) %>
+<!--true処理(非同期処理)-->
+  <%= link_to public_post_item_favorites_path(post_item), method: :delete, remote: true do %>
+    <i class="far fa-star"></i>
+  <% end %>
+<% else %>
+<!--false処理(非同期処理)-->
+  <%= link_to public_post_item_favorites_path(post_item), method: :post, remote: true do %>
+    <i class="fas fa-star"></i>
+  <% end %>
+<% end %>
+<!--ファボ数の管理-->
+<!--<p class="favoriteCount"><%#= post_item.favorites.count %></p>-->

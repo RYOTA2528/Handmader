@@ -1,0 +1,2 @@
+$("#favorite_area_<%= @post_item.id %>").html("<%= j(render partial: 'public/favorites/favorite', locals: { post_item: @post_item }) %>");
+<!-- ｊ メソッドにより非同期で更新かつidを持たせることで、#favorite_areaへidを繰り返し処理し部分的にrender部分のみ処理 -->

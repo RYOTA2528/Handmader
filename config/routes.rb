@@ -21,12 +21,17 @@ namespace :admin do
   resources :users, only: [:show, :edit, :update]
 end
 
+# マイページにお気に入り一覧作成。その為、idが必要ないためcollectionにてルーティング作成
 namespace :public do
   get '/', to: 'homes#top'
   get '/unsubscribe', to: 'users#unsubscribe'
   patch '/withdraw', to: 'users#withdraw'
-  resources :users, only: [:show, :edit, :update]
-  resources :post_items
+  resources :users, only: [:show, :edit, :update] do
+  get :favorites, on: :collection
+  end
+  resources :post_items do
+  resource :favorites, only: [:create, :destroy]
+  end
   resources :genres, only: [:show]
 end
 

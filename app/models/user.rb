@@ -12,9 +12,15 @@ class User < ApplicationRecord
   has_many_attached :images
 
   has_many :post_items ,dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
 #今回は現会員＝false(db上でもdefault値をfalseにて登録)、退会ユーザー（Non_member）をtrueとしてる
    def active_for_authentication?
      super && (self.is_deleted == false)
+   end
+# 投稿に対して、ファボしてるorファボしてないで条件分岐を作る
+   def already_favorited?(post_item)
+    self.favorites.exists?(post_item_id: post_item.id)
    end
 
 end
