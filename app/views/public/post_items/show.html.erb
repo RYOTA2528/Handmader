@@ -9,9 +9,13 @@
           <%= image_tag(image, width:250) %>
         <% end %>
       </div>
-      <div id="favorite_area_<%= @post_item %>", class="favoriteArea">
+      <!--ユーザーがログインしていてかつ、@userが現在のユーザーでなければ表示（つまりマイページには表示されない）-->
+    <% if user_signed_in? && @post_item.user_id != current_user.id %>
+    <!--お気に入りボタンの実装-->
+      <div id="favorite_area_<%= @post_item.id %>", class="favoriteArea">
         <%= render partial: "public/favorites/favorite", locals: { post_item: @post_item } %>
       </div>
+    <% end %>
     </div><br />
     <div class="row text-center">
       <div class="col ">
