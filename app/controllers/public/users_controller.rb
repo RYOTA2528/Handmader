@@ -5,9 +5,9 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @post_items = @user.post_items
     # 現在のユーザーがお気に入りにしたpost_item_idを全件取得し格納
-    favorite_list = Favorite.where(user_id: current_user.id).pluck(:post_item_id)
+    # favorite_list = Favorite.where(user_id: current_user.id).pluck(:post_item.id)
     # ↑で格納したお気に入りリスト（お気に入りにした投稿レコードを取得したもの）を、マイページで一覧として出力できるよう変数定義(@favorite.list_page)しview側でeach文で出力
-    @favorite_list_page = PostItem.find(favorite_list)
+    # @favorite_list_page = PostItem.find(favorite_list)
     # PostImageモデル作成後の記述。下記で現在のユーザーの投稿のみを取得できる
     @post_items = @user.post_items.page(params[:page]).reverse_order
   end

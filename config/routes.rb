@@ -30,7 +30,7 @@ namespace :public do
   get :favorites, on: :collection
   end
   resources :post_items do
-  resource :favorites, only: [:create, :destroy]
+  resource :favorites, only: [:show, :create, :destroy]
   end
   resources :genres, only: [:show]
 end

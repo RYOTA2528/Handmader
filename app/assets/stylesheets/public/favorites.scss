@@ -5,3 +5,63 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.favoriteColor{
+ font-size     : 17pt;
+ // border-bottom: solid 3px #DDDDDD;
+ // box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+ // border-radius: 9px;
+}
+
+.favoriteChangeColor{
+ color: #FFAD90	;
+ font-size     : 17pt;
+ border-bottom: solid 3px #DDDDDD;
+ box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+ border-radius: 9px;
+}
+
+.favoriteBox{
+  margin: auto;
+  padding: auto;
+  border: 5px double #ccddff;
+  border-radius: 10px;
+}
+
+.favoriteTitle{
+  font-family: 'Caveat', cursive;
+  margin: auto;
+  padding: auto;
+}
+.favoriteCount{
+  font-family: 'Caveat', cursive;
+  margin: auto;
+  padding: auto;
+}
+.Title{
+  text-align: center;
+  font-family: 'Caveat', cursive;
+
+}
+
+.Box{
+    position: relative;
+    background: #fff0cd;
+    box-shadow: 0px 0px 0px 5px #fff0cd;
+    border: dashed 2px white;
+    padding: 0.2em 0.5em;
+    color: #454545;
+}
+.Box:after{
+    position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #ffdb88 #fff #ffdb88;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+.Box p {
+    margin: 0;
+    padding: 0;
+}

@@ -18,6 +18,7 @@ class Public::PostItemsController < ApplicationController
 
   def show
     @post_item = PostItem.find(params[:id])
+    # @favorites_count = Favorite.where(post_item_id: @post_item.id).count
     # PostImageモデル作成後の記述。下記のようにすると現在のユーザーの投稿のみを取得できる
     # @post_items = @user.post_items.page(params[:page]).reverse_order
   end

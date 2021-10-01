@@ -1,6 +1,12 @@
 class Public::FavoritesController < ApplicationController
-  before_action :set_post
+  before_action :set_post, only: [:create, :destroy]
   before_action :authenticate_user!
+
+  def show
+    favorite_list = Favorite.where(user_id: current_user.id).pluck(:post_item_id)
+    @favorite_list_page = PostItem.find(favorite_list)
+  end
+
 
   # ファボする(投稿者とログイン中のユーザーが違う場合のみ可能。非同期処理により作成)
   def create

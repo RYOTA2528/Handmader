@@ -1,14 +1,19 @@
-<!--trueであれば既にフォボしてるため削除ボタン、falseであればお気に入りボタン-->
-<% if current_user.already_favorited?(post_item) %>
-<!--true処理(非同期処理)-->
-  <%= link_to public_post_item_favorites_path(post_item), method: :delete, remote: true do %>
-    <i class="far fa-star"></i>
+<div class="favoriteBox">
+  <h6 class="favoriteTitle"><strong>Let's register as a favorite!!</strong></h6>
+  <!--trueであれば既にフォボしてるため削除ボタン、falseであればお気に入りボタン-->
+  <div class="text-center">
+  <% if current_user.already_favorited?(post_item) %>
+  <!--true処理(destroy.js.erbで非同期処理させる)-->
+    <%= link_to public_post_item_favorites_path(post_item), method: :delete, remote: true do %>
+      <i class="fas fa-star favoriteChangeColor"></i>
+    <% end %>
+  <% else %>
+  <!--false処理(create.js.erbで非同期処理させる)-->
+    <%= link_to public_post_item_favorites_path(post_item), method: :post, remote: true do %>
+      <i class="far fa-star favoriteColor"></i>
+    <% end %>
   <% end %>
-<% else %>
-<!--false処理(非同期処理)-->
-  <%= link_to public_post_item_favorites_path(post_item), method: :post, remote: true do %>
-    <i class="fas fa-star"></i>
-  <% end %>
-<% end %>
-<!--ファボ数の管理-->
-<!--<p class="favoriteCount"><%#= post_item.favorites.count %></p>-->
+  <!--ファボ数の管理-->
+   <p class="favoriteCount"><%= post_item.favorites.count %></p>
+  </div>
+</div>
