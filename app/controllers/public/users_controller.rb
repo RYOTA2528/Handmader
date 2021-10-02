@@ -42,17 +42,13 @@ class Public::UsersController < ApplicationController
   #（フォロー一覧）
   def following
    @user = User.find(params[:id])
-   @users = @user.following
-  #show_following.htmlへ飛ばす
-   render 'show_following'
+   @followings = @user.following
   end
 
   #（フォロワー一覧）
   def followers
    @user = User.find(params[:id])
-   @users = @user.followers
-  #show_followers.htmlへ飛ばす
-   render 'show_followers'
+   @followers = @user.followers
   end
 
   private
