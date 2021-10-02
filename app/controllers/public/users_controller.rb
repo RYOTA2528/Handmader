@@ -25,7 +25,7 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-
+# 退会機能用メソッド
   def unsubscribe
    @user = current_user
   end
@@ -37,6 +37,22 @@ class Public::UsersController < ApplicationController
    reset_session
    flash[:notice] = "ありがとうございました。またのご利用お待ちしております！"
    redirect_to root_path
+  end
+#フォロー機能用（一覧ページ用）メソッド
+  #（フォロー一覧）
+  def following
+   @user = User.find(params[:id])
+   @users = @user.following
+  #show_following.htmlへ飛ばす
+   render 'show_following'
+  end
+
+  #（フォロワー一覧）
+  def followers
+   @user = User.find(params[:id])
+   @users = @user.followers
+  #show_followers.htmlへ飛ばす
+   render 'show_followers'
   end
 
   private

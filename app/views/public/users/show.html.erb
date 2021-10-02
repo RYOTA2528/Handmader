@@ -16,6 +16,24 @@
               <%= image_tag ("no_image.png"),size: '250x250'  %>
               <% end %>
        </div><br />
+    <!--フォロー・フォロワー人数・リンク挿入-->
+       <div class="following">
+        <%= link_to following_public_user_path(@user.id) do %>
+          <h6>フォロー<%= @user.following.count %>人</h6>
+        <% end %>
+       </div>
+       <div class="followers">
+         <%= link_to followers_public_user_path(@user.id) do %>
+          <h6>フォロワー<%= @user.followers.count %>人</h6>
+        <% end %>
+       </div>
+    <!--partialにてフォロボタン出現させる（条件分岐により本人以外）-->
+       <div class="active_follow">
+       <% if user_signed_in? && @user != current_user %>
+         <%= render "following_form"  %>
+       <% end %>
+       </div>
+
        <div class="col">
          <span>【自己紹介】</span>
          <h4 class="profile"><%=@user.profile %></h4>
@@ -24,7 +42,8 @@
           <% if @user.id == current_user.id %>
           <%= link_to "プロフィール編集", edit_public_user_path(@user) %><br />
           <%= link_to "退会する", public_unsubscribe_path(@user) %><br />
-          <%= link_to '投稿フォーム', new_public_post_item_path(@user) %>
+          <%= link_to '投稿フォーム', new_public_post_item_path(@user) %><br />
+          <%= link_to 'お気に入り一覧', public_post_item_favorites_path(@user) %>
        </div>
           <% end %>
       </div>
@@ -48,8 +67,7 @@
         <% @favorite_list.each do |post_item| %>
           <%= post_item.name %>
         <% end %>
-      <% end %>S
-
+      <% end %>
       </div>
     </div>
   </div>

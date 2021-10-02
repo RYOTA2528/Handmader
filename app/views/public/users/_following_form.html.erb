@@ -1,0 +1,10 @@
+<div id="following_form">
+  <!--もし現在のユーザーがフォローしている場合は-->
+    <% if current_user.already_following?(@user) %>
+    <!--フォロー解除ボタンを出現させる-->
+      <%= render "delete_follow" %>
+    <% else %>
+    <!--フォローボタンを出現させる-->
+      <%= render "active_follow" %>
+    <% end %>
+  </div>

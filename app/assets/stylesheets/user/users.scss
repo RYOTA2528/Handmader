@@ -12,3 +12,37 @@
 .profile {
    font-size: 16px;
 }
+
+.following {
+   color: #FFAD90	;
+}
+
+.followers {
+   color: #0000FF	;
+}
+
+.btn--blue {
+  color: #000;
+  background-color: #99FFFF;
+  border-bottom: 5px solid #ccc100;
+}
+
+.btn--blue:hover {
+  margin-top: 3px;
+  color: #000;
+  background: #99FFFF;
+  border-bottom: 2px solid #ccc100;
+}
+
+.btn--light-blue {
+  color: #000;
+  background-color: #BAD3FF;
+  border-bottom: 5px solid #ccc100;
+}
+
+.btn--light-blue:hover {
+  margin-top: 3px;
+  color: #000;
+  background: #BAD3FF;
+  border-bottom: 2px solid #ccc100;
+}

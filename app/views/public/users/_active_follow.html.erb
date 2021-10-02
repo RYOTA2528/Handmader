@@ -1,0 +1,6 @@
+<%= form_with url: public_relationships_path, method: :post, remote: true do |f| %>
+<!--画面に表示しないようhidden_fieldで渡す。かつ@user.idをfollowing_idに代入する-->
+
+  <%= f.hidden_field :following_id, :value => @user.id %>
+  <%= f.submit "フォローする", class: "btn btn--blue btn--cubic" %>
+<% end %>

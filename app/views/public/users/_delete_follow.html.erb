@@ -1,0 +1,4 @@
+<%= form_with  url: public_relationship_path(@user), method: :delete, remote: true do |f| %>
+<!--画面に表示しないようhidden_fieldで渡す。かつ@user.idをfollowing_idに代入する-->
+  <%= f.submit "フォローを解除する", class: "btn btn--light-blue btn--cubic" %>
+<% end %>
