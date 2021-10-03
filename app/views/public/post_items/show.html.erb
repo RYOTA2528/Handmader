@@ -30,21 +30,41 @@
     <div class="text-center">
     <h5><span>【登録ジャンル】</span></h5>
     </div>
-    <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center mr-auto ml-auto">
       <% @post_item.genres.each do |genre| %>
-      <div class="col text-center box">
+      <div class="col-md-5 box text-center">
         <%= genre.name %>
       </div>
     </div>
     <% end %>
     <% if @post_item.user_id == current_user.id %>
-    <div class="row offset-3">
+    <div class="row">
       <div class="col text-center">
+        <%= link_to '編集', edit_public_post_item_path(@post_item.id), class:"mr-5" %>
         <%= link_to '削除', public_post_item_path(@post_item.id), method: :delete, data: { confirm: '削除してよろしいですか?' } %>
       </div>
-      <div class="col">
-        <%= link_to '編集', edit_public_post_item_path(@post_item.id) %>
-      </div>
     <% end %>
+    </div>
+    <div>
+      <p>コメント件数：<%= @post_item.comments.count %></p>
+      <% @post_item.comments.each do |comment| %>
+        <p><% if @post_item.user.avatar.attached? %>
+             <%= image_tag @post_item.user.avatar.variant(resize:'50x50').processed %>
+           <% else %>
+             <%= image_tag ("no_image.png"),size: '50x50' %>
+           <% end %>
+        </p>
+         <%= comment.user.nickname %></p>
+         <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.content %>
+         <% if comment.user == current_user %>
+           <%= link_to "削除", public_post_item_comment_path(comment.post_item, comment), method: :delete %>
+         <% end %>
+      <% end %>
+    </div>
+    <div>
+      <%= form_with(model:[@post_item, @comment], url: public_post_item_comments_path(@post_item, @comment), local: true) do |f| %>
+      <%= f.text_area :content, rows:'7',placeholder: "（例）コメントを記載してください（300文字まで）" %>
+      <%= f.submit "送信する" %>
+      <% end %>
     </div>
 </div>

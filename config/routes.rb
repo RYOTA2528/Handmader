@@ -27,12 +27,14 @@ namespace :public do
   patch '/withdraw', to: 'users#withdraw'
   resources :users, only: [:show, :edit, :update] do
 # フォロー・フォローワー一覧作成。
-  get :following, :followers, on: :member
+   get :following, :followers, on: :member
 # マイページにお気に入り一覧作成。その為、idが必要ないためcollectionにてルーティング作成
-  get :favorites, on: :collection
+   get :favorites, on: :collection
   end
+# どの投稿作品に対してのお気に入り・コメントかを判断するためid付与
   resources :post_items do
-  resource :favorites, only: [:show, :create, :destroy]
+   resource :favorites, only: [:show, :create, :destroy]
+   resources :comments, only: [:create, :destroy]
   end
   resources :relationships, only: [:create, :destroy]
   resources :genres, only: [:show]

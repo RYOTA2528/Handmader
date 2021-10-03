@@ -10,11 +10,11 @@
          <h4 class="nickname"><%=@user.nickname %>さん</h4><br />
        </div>
        <div class="col">
-              <% if @user.avatar.attached? %>
-              <%= image_tag @user.avatar.variant(resize:'250x250').processed %>
-              <% else %>
-              <%= image_tag ("no_image.png"),size: '250x250'  %>
-              <% end %>
+         <% if @user.avatar.attached? %>
+           <%= image_tag @user.avatar.variant(resize:'250x250').processed %>
+         <% else %>
+           <%= image_tag ("no_image.png"),size: '250x250'  %>
+         <% end %>
        </div><br />
     <!--フォロー・フォロワー人数・リンク挿入-->
        <div class="following">
