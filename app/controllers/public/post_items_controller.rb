@@ -1,5 +1,6 @@
 class Public::PostItemsController < ApplicationController
   before_action :authenticate_user!
+
   def new
    @post_item = PostItem.new
    @genres= Genre.all
@@ -55,12 +56,17 @@ class Public::PostItemsController < ApplicationController
     redirect_to public_user_path(current_user)
   end
 
-   def search
-     @genres = Genre.all
-     @genre = Genre.find(params[:id])
-     @post_items = PostItem.all
-     @post_items = PostItem.limit(10).order("created_at DESC")
-   end
+  def search
+    @genres = Genre.all
+    @genre = Genre.find(params[:id])
+    @post_items = PostItem.all
+    @post_items = PostItem.limit(10).order("created_at DESC")
+  end
+  # お気に入り数ランキング
+  def ranking
+    @favorite_ranks = PostItem.find(Favorite.group(:post_item_id).order('count(post_item_id)desc').limit(5).pluck(:post_item_id))
+    @post_items = PostItem.order("created_at DESC")
+  end
 
   private
 

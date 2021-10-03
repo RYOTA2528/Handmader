@@ -49,7 +49,7 @@
       <p>コメント件数：<%= @post_item.comments.count %></p>
       <% @post_item.comments.each do |comment| %>
         <p><% if @post_item.user.avatar.attached? %>
-             <%= image_tag @post_item.user.avatar.variant(resize:'50x50').processed %>
+             <%= image_tag current_user.avatar.variant(resize:'50x50').processed %>
            <% else %>
              <%= image_tag ("no_image.png"),size: '50x50' %>
            <% end %>

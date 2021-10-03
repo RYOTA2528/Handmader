@@ -35,6 +35,7 @@ namespace :public do
   resources :post_items do
    resource :favorites, only: [:show, :create, :destroy]
    resources :comments, only: [:create, :destroy]
+   get :ranking, on: :collection
   end
   resources :relationships, only: [:create, :destroy]
   resources :genres, only: [:show]

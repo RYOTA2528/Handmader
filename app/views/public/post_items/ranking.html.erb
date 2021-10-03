@@ -1,0 +1,8 @@
+<div class="container px-5 px-sm-0">
+  <h3><strong>人気投稿作品ランキング!!</strong></h3>
+        <% @favorite_ranks.each.with_index(1) do |post_item, i| %>
+          第<%= i %>位
+         <%= render partial: 'post_item', locals:{ post_item: post_item} %>
+        <% end %>
+ </div>
+
