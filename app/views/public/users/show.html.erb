@@ -46,7 +46,23 @@
           <%= link_to 'お気に入り一覧', public_post_item_favorites_path(@user) %>
        </div>
           <% end %>
-      </div>
+  <!--下記チャット機能（前提：@userがcurrent_userでない時のみ出現させる）-->
+       <% unless @user.id == current_user.id %>
+       <!--お互いがフォローしてる場合&既にチャットルームがある場合は、チャットルームボタンを出現させる-->
+         <% if (current_user.followed_by? @user) && (@user.followed_by? current_user) %>
+          <% if @haveChatRoom == true %>
+           <%= link_to "チャットルームへ", public_chat_room_path(@haveChatRoom), class: "btn btn-primary col" %>
+          <% else %>
+       <!--チャットルームがまだ作成されてない場合は、下記で新規作成する-->
+          <%= form_with model: @chat_room, url: public_chat_rooms_path, method: :post, local:true do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, value :@user.id %>
+            <% end %>
+          <%= f.submit '新規チャットルームを作る', class: "btn btn-primary col" %>
+          <% end %>
+         <% end %>
+       <% end %>
+    </div>
   </div>
   <div class-"col-md-7">
     <div class="container px-5 px-sm-0">

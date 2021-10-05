@@ -4,12 +4,27 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post_items = @user.post_items
-    # 現在のユーザーがお気に入りにしたpost_item_idを全件取得し格納
-    # favorite_list = Favorite.where(user_id: current_user.id).pluck(:post_item.id)
-    # ↑で格納したお気に入りリスト（お気に入りにした投稿レコードを取得したもの）を、マイページで一覧として出力できるよう変数定義(@favorite.list_page)しview側でeach文で出力
-    # @favorite_list_page = PostItem.find(favorite_list)
     # PostImageモデル作成後の記述。下記で現在のユーザーの投稿のみを取得できる
     @post_items = @user.post_items.page(params[:page]).reverse_order
+#フォロー・フォロワーどうしは使用可能なチャット機能を作成。下記にコードを記述
+　# 現在のユーザーのルームIDと受ける側ユーザーのチャットルームIDが一緒ならば既に作成済みルームを選び。falseならチャットルーム・Entryの新規作成を。
+    @currentUserEntry = Entry.where(user_id: current_user.id)
+    @reciveUserEntry = Entry.where(user_id: @user.id)
+    # 前提として、@user.idはcurrent_user.idではない（一意性）
+    unless @user.id == current_user.id
+      @currentUserEntry.each do |cu|
+         @reciveUserEntry.each do |ru|
+           if cu.chat_room_id = ru.chat_room_id
+             @haveChatRoom = true
+             @chat_room_id = cu.chat_room_id
+           end
+         end
+      end
+      unless @haveChatRoom
+      @chat_room = ChatRoom.new
+      @entry = Entry.new
+      end
+    end
   end
 
   def edit

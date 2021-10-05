@@ -39,6 +39,10 @@ namespace :public do
   end
   resources :relationships, only: [:create, :destroy]
   resources :genres, only: [:show]
+#  チャット機能導入
+  resources :chats, only: [:create]
+  resources :chat_rooms, only: [:create,:show]
+
 end
 
 end

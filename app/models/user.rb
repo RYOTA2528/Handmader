@@ -11,6 +11,10 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many_attached :images
 
+# DM機能の作成
+  has_many :chats, dependent: :destroy
+  has_many :entries, dependent: :destroy
+
   has_many :post_items, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
