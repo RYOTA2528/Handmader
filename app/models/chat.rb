@@ -1,5 +1,5 @@
 class Chat < ApplicationRecord
-  validates :content, presence: true
+  validates :chat, presence: true
   belongs_to :user
   belongs_to :chat_room
 end

@@ -7,23 +7,24 @@ class Public::UsersController < ApplicationController
     # PostImageモデル作成後の記述。下記で現在のユーザーの投稿のみを取得できる
     @post_items = @user.post_items.page(params[:page]).reverse_order
 #フォロー・フォロワーどうしは使用可能なチャット機能を作成。下記にコードを記述
-　# 現在のユーザーのルームIDと受ける側ユーザーのチャットルームIDが一緒ならば既に作成済みルームを選び。falseならチャットルーム・Entryの新規作成を。
+# 現在のユーザーのルームIDと招待を受ける側ユーザーのチャットルームIDが一緒ならば既に作成済みルームを選び。falseならチャットルーム・Entryの新規作成を。
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @reciveUserEntry = Entry.where(user_id: @user.id)
+    @haveChatRoom = false
     # 前提として、@user.idはcurrent_user.idではない（一意性）
     unless @user.id == current_user.id
       @currentUserEntry.each do |cu|
          @reciveUserEntry.each do |ru|
-           if cu.chat_room_id = ru.chat_room_id
+           if cu.chat_room_id == ru.chat_room_id then
              @haveChatRoom = true
              @chat_room_id = cu.chat_room_id
            end
          end
       end
-      unless @haveChatRoom
-      @chat_room = ChatRoom.new
-      @entry = Entry.new
-      end
+    end
+    unless @haveChatRoom
+        @chat_room = ChatRoom.new
+        @entry = Entry.new
     end
   end
 

@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<!--フォローどうしの情報を表示する部分-->
+<% @users.each do |e| %>
+<div>
+  <% if e.avatar.attached? %>
+    <%= image_tag e.avatar.variant(resize:'60x60').processed %>
+  <% else %>
+    <%= image_tag ("no_image.png"), size: '60x60' %>
+  <% end %>
+  <%= e.nickname %>
+</div>
+<% end %>
+<!--チャット表示部分-->
+<div class><strong>～チャットを始めよう～</stromg>
+<% if @chats.present? %>
+  <% @chats.each do |c| %>
+    <div class="chat-box">
+      <div class="chat-image">
+        <% if c.user.avatar.attached? %>
+          <%= image_tag c.user.avatar.variant(resize:'60x60').processed %>
+        <% else %>
+          <%= image_tag ("no_image.png"), size: '60x60' %>
+        <% end %>
+      </div>
+      <div class="chat-area">
+        <div class="chat-hukidashi">
+          <%= c.chat %><br />
+          <h6><%= c.created_at.strftime("%Y-%m-%d %H:%M") %></h6>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+</div>
+<!--チャットの新規投稿欄-->
+<div>
+  <%= form_with model: @chat, url: public_chats_path, method: :post, local: true do |f| %>
+    <%= f.text_area :chat, rows:'5',placeholder: "メッセージを入力してください" %>
+    <%= f.hidden_field :chat_room_id, value: @chat_room.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>
+
+
+

@@ -49,16 +49,15 @@
   <!--下記チャット機能（前提：@userがcurrent_userでない時のみ出現させる）-->
        <% unless @user.id == current_user.id %>
        <!--お互いがフォローしてる場合&既にチャットルームがある場合は、チャットルームボタンを出現させる-->
-         <% if (current_user.followed_by? @user) && (@user.followed_by? current_user) %>
+         <% if (current_user.already_following?(@user)) && (@user.already_following?(current_user)) %>
           <% if @haveChatRoom == true %>
-           <%= link_to "チャットルームへ", public_chat_room_path(@haveChatRoom), class: "btn btn-primary col" %>
+           <%= link_to "チャットルームへ", public_chat_room_path(@chat_room_id), class: "btn btn-primary col" %>
+           <% end %>
           <% else %>
        <!--チャットルームがまだ作成されてない場合は、下記で新規作成する-->
-          <%= form_with model: @chat_room, url: public_chat_rooms_path, method: :post, local:true do |f| %>
-            <%= fields_for @entry do |e| %>
-              <%= e.hidden_field :user_id, value :@user.id %>
-            <% end %>
-          <%= f.submit '新規チャットルームを作る', class: "btn btn-primary col" %>
+          <%= form_with(url: public_chat_rooms_path, method: :post, local: true) do |f| %>
+            <%= f.hidden_field :user_id, value: @user.id %>
+            <%= f.submit '新規チャットルームを作る', class: "btn btn-primary col" %>
           <% end %>
          <% end %>
        <% end %>

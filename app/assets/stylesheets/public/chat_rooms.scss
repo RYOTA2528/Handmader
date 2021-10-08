@@ -1,0 +1,30 @@
+// Place all the styles related to the public/chat_rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+.chat-box {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+.chat-image {
+  float: left;
+  margin-right: -100px;
+}
+.chat-area {
+  width: 100%;
+  float: right;
+}
+.chat-hukidashi {
+  display: inline-block; /*コメントの文字数に合わせて可変*/
+  padding: 15px 20px;
+  margin-left: 120px;
+  margin-top: 8px;
+  border: 1px solid;
+  border-radius: 10px;
+  position: relative;
+}
