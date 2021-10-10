@@ -61,3 +61,19 @@ body {
 .login{
   color  : blue;            /* 文字の色 */
 }
+
+#container{
+  height: 500px;
+  margin-bottom: 20px;
+   img{
+     width: 100%;
+     height: 500px;
+   }
+}
+
+.content{
+  display: flex;
+  height: auto;
+  width: auto;
+  align-items: flex-start;
+}

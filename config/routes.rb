@@ -6,6 +6,7 @@ Rails.application.routes.draw do
      passwords: 'public/users/passwords',
    }
 
+   get  '/top', to: 'homes#top'
    root to: 'homes#about'
 
   devise_for :admins, controllers: {

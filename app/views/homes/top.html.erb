@@ -1,0 +1,115 @@
+<main>
+
+    <div id="container">
+      <div id="theTarget">
+        <div><%= link_to image_tag('Slide1.PNG'), new_public_post_item_path %>
+        </div>
+        <div><%= link_to image_tag('Slide2.PNG'), public_post_items_path %>
+        </div>
+        <div><%= link_to image_tag('Slide3.PNG'), ranking_public_post_items_path %>
+        </div>
+      </div>
+    </div>
+  <div class="container">
+   <div class="row">
+      <div class=" p-5 text-center content col-md-6 ">
+         <%= image_tag ("Welcome.png"),size: '600x300' %>
+      </div>
+      <div class="col-md-6">
+        <h1 class="pt-5 pl-3 mb-3 col text-center">
+          <strong>Handmaderへようこそ～！</strong></h1>
+          ようこそHandmaderへ!
+          左の写真のように、”ハンドメイド作品”をぜひ投稿してください。
+          始めたての人からプロの方々まで、様々な投稿作品を見ることができます。
+      </div>
+    </div>
+   </div>
+    <!-- Three columns of text below the carousel -->
+    <div class="row pt-3">
+      <div class="card text-center col-md-4">
+        <div class="card-header">
+          Step1
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">登録をしよう!</h5>
+          <p class="card-text">First, register as a member! If you are already registered, please login.</p>
+          <%= link_to "登録する/ログインする", new_public_post_item_path, class: "btn btn-primary" %>
+        </div>
+        <div class="card-footer text-muted">
+          ～新規登録・ログイン～
+        </div>
+      </div>
+      <div class="card text-center col-md-4">
+        <div class="card-header">
+          Step2
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">プロフィールを完成させよう!</h5>
+          <p class="card-text">Complete your profile first! Thank you for your cooperation.</p><br/>
+          <%= link_to "マイページへ", public_user_path(current_user.id), class: "btn btn-primary" %>
+        </div>
+        <div class="card-footer text-muted">
+          ～マイページ～
+        </div>
+      </div>
+      <div class="card text-center col-md-4">
+        <div class="card-header">
+          Step3
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">作品を投稿しよう!</h5>
+          <p class="card-text">Let's start submitting our work! Let's get started!</p><br/>
+          <%= link_to "新規投稿する", new_public_post_item_path, class: "btn btn-primary" %>
+        </div>
+        <div class="card-footer text-muted">
+          ～新規投稿～
+        </div>
+      </div>
+    </div>
+    <!--使い方の説明 -->
+    <div class="row featurette pt-5 ml-3 mr-3">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">投稿作品へコメントをしよう!<span class="text-muted"><h3>コメント一つで繋がりが広がる。</h3></span></h2>
+        <p class="lead">いい作品に巡り合えたらまずは積極的に投稿へコメントしましょう！<br/>ランキングページには人気投稿作品が順番で並んでます。気になった作品は積極的に話を聞いてみましょう。作品の思い・工夫を知ることでインスピレーションが沸き上がります。</p>
+      </div>
+      <div class="col-md-5">
+      <%= image_tag ("comment.png"),size: '500x500'  %>
+      </div>
+    </div>
+    <hr class="featurette-divider">
+
+    <div class="row featurette pt-5 ml-3 mr-3">
+      <div class="col-md-5">
+      <%= image_tag ("follow.png"),size: '500x500'  %>
+      </div>
+      <div class="col-md-7">
+        <h2 class="featurette-heading">フォローをしよう!<span class="text-muted"><h3>気になるクリエーターを見つけよう。</h3></span></h2>
+        <p class="lead">いい作品に巡り合えたら、クリエーターの作品をチェックしよう。<br/>クリエーターのプロフィールページには本人の稿作品が順番で並んでます。クリエーターの作品を知り、自分のハンドメイド作品に組み込みましょう!</p>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette pt-5 ml-3 mr-3">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">相互フォローでチャット機能を使おう!<span class="text-muted"><h3>チャット機能で共同制作など、よりハンドメイドの可能性が広がる!。</h3></span></h2>
+        <p class="lead">お互いがフォローしあうことで、より仲を深められる！<br/>ジャンル検索機能で自分の気になるジャンルが見つかります。積極的にフォローしあうことでビジネスパートナーの発掘やより詳細な話し合いも可能です。</p>
+      </div>
+      <div class="col-md-5">
+      <%= image_tag ("chat.png"),size: '500x500'  %>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-end"><a href="#">トップに戻る</a></p>
+    <p>© 2017-2021 Company, Inc. ·</p>
+  </footer>
+</main>

@@ -12,15 +12,18 @@
   <body class="d-flex flex-column vh-100">
   <% unless current_page?(root_path) %>
     <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light md">
         <div class="container">
-           <span><%= link_to image_tag('Handmader logo.png'), '/', class: 'navbar-brand' %></span>
+           <span><%= link_to image_tag('Handmader logo.png'), '/top',size: '20x20', class: 'navbar-brand　icon' %></span>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to 'ホーム', top_path, class: 'nav-link text-dark' %>
+            </li>
             <li class="nav-item">
               <%= link_to 'マイページ', public_user_path(current_user.id), class: 'nav-link text-dark' %>
             </li>
@@ -50,13 +53,6 @@
            </li>
            <% else %>
            <li>ゲストユーザー</li>
-           <!--<li class="nav-item">-->
-           <!-- <%#= link_to "About", about_path, class:'nav-link' %>-->
-           <!--※重要：ログイン前About=のlink_to作成は一旦保留。（まだAboutコントローラー（今回Aboutにモデルとアソシエーションは不要）ルーティング（これは単独でroute.rbへ記載））の作成をしてないため一旦はadmin/homesとつなげとく-->
-           <!--</li>-->
-           <!--<li class="nav-item">-->
-           <!-- <%#= link_to "商品一覧", user_post_items_path, class:'nav-link' %>-->
-           <!--</li>-->
            <li class="nav-item">
             <%= link_to "新規登録", new_user_registration_path, class:'nav-link' %>
            </li>
@@ -67,7 +63,7 @@
             </ul>
             <!--検索機能（投稿作品で検索します。）-->
             <%= search_form_for @search, url: public_post_items_path do |f| %>
-              <%= f.text_field :name_cont, placeholder: '名前を入力...' %>
+              <%= f.text_field :name_cont, placeholder: '作品を検索する' %>
               <%= f.submit ("検索する") %>
             <% end %>
           </div>
