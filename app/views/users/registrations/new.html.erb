@@ -1,19 +1,19 @@
-<div class="container px-5 px-sm-0">
-<div class= "justify-content-md-center">
+<div class="container px-5 pt-2 px-sm-0">
+<div class= "text-center">
   <h1>Handmaderへようこそ～</h2>
   <h2>～Welcome to Handmader～</h2>
-  <h2>会員登録画面</h2>
 </div>
-
+<div class="text-center pt-5">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
-
+  <div class="text-center mb-4">
+    <%= image_tag ("Handmader logo.png"), size: '150x150'  %>
+    <h1 class="h3 mb-3 font-weight-normal">User SINGUP</h1>
+  </div>
   <div class="field, justify-content-md-center">
     <%= f.label :名前 %><br />
     <%= f.text_field :name, autofocus: true %>
   </div>
-
-
   <div class="field, justify-content-md-center">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -36,7 +36,7 @@
     <%= f.submit '新規登録', class:"btn btn-lg btn-primary mt-3" %>
   </div></br/>
 <% end %>
-
 会員登録をお済みの方はこちらから
 <%= render "users/shared/links" %>
+</div>
 </div>

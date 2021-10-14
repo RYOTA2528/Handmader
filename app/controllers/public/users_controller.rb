@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @post_items = @user.post_items
+    @comments =Comment.all
     # PostImageモデル作成後の記述。下記で現在のユーザーの投稿のみを取得できる
     @post_items = @user.post_items.page(params[:page]).reverse_order
 #フォロー・フォロワーどうしは使用可能なチャット機能を作成。下記にコードを記述

@@ -9,8 +9,8 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-   @comment = Comment. find_by(id: @comment.id)
-   redirect_to public_post_item_path(@post_item)
+   @comment = Comment.find_by(id: params[:id]).destroy
+   redirect_to public_post_item_path(params[:post_item_id])
   end
 
   private

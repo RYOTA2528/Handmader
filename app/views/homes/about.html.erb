@@ -8,7 +8,7 @@
     <div class="text-center">
       <h6>皆さん、ハンドメイドは一人でこなす作業だと思われていませんか？？</h6>
       <h6>私は素人であるため、まずは作業から！と日々無心にハンドメイド作品を作り上げることに明け暮れてました。</h6>
-      <h6>そんな日々の中で、作品へのアイデアが思いつかずつい…『あー　誰かと相談できたらいいのにな...』</h6>
+      <h6>そんな日々の中で、作品へのアイデアが思いつかずつい…『あー誰かと相談できたらいいのにな...』</h6>
       <h6>なんて考えることが多々あります。</h6>
       <p>外出自粛が余技なくされ人と人とのコミュニケーションが取りづらい世の中で<br />
       サイトを介し他のクリエーターと話題を共有できる場所があればと考えていました。<br /></p>
@@ -36,18 +36,14 @@
     <h5><strong>既にご登録済みの方はこちらから→</strong><%= link_to "【ログイン】", new_user_session_path, class: "login mt-4 col"%></h5>
    </div>
    <br />
-   <br />
    <div class="row offset-1">
      <div class="col">
-       <%= link_to "ホームページを見に行こう！",  root_path, class: "button " %>
+       <%= link_to "ホームページを見に行こう！",  top_path, class: "button " %>
      </div>
      <div class="col">
-       <%= link_to  "みんなの作品を見に行こう！", root_path, class: "button" %>
+       <%= link_to  "みんなの作品を見に行こう！",  public_post_items_path, class: "button" %>
      </div>
    </div>
  </div>
 </div>
-<br />
-<br />
-<br />
-</body>
+</div>

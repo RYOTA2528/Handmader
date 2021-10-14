@@ -5,9 +5,142 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+.titlename{
+  font-family: 'Permanent Marker', cursive;
+  text-shadow: 0 5px 5px black;
+}
 .box{
   margin: auto;
   padding: auto;
   border: 5px double #ccddff;
   border-radius: 10px;
+}
+.genre_title{
+  font-family: 'IM Fell DW Pica SC', serif;
+}
+.col-md-4{
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+.card{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card1{
+  width: 100%;
+  height: 100%;
+  width: 250px;
+  height: 400px;
+}
+.card-img{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+.card-image{
+  width: 100%;
+  height: 100%;
+  weight: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.card-body{
+  text-shadow: 0 5px 5px black;
+  background-image: image-url('post_items_background.PNG');
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+.card-text{
+  font-family: 'IM Fell DW Pica SC', serif;
+}
+.itemname{
+  white-space: nowrap;
+  color: white;
+}
+.box1 {
+    position: relative;
+    padding: 0.5em 0.7em;
+    margin: 2em 0;
+    background: #e6f4ff;
+    color: #5c98d4;
+    font-weight: bold;
+}
+.box1:after {
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: 30px;
+    border: 15px solid transparent;
+    border-top: 15px solid #e6f4ff;
+    width: 0;
+    height: 0;
+}
+.box1 {
+    margin: 0px;
+    padding: 20px;
+}
+.box2 {
+    background-color:#FFDEAD;
+}
+
+.box2 {
+    margin: 0;
+    padding: 0;
+}
+.avatar_image{
+  width: 100%;
+  height: 100%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  justify-content: center;
+  img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+}
+.titlename{
+  font-family: 'Kaushan Script', cursive;
+  color: #FF9966;
+}
+.img{
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+.genre{
+  color: #FF9966;
+}
+html , body{
+  background-image: image-url('index_background.jpg');
+  width: auto;
+  height: auto;
+  background-attachment: fixed;         /* 固定 */
+  background-size: cover;
+  background-position: center center;   /* 縦横中央 */
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+}
+.comment{
+  color: #88FFFF;
+}
+.favorite{
+ color: #FFAD90	;
+ margin: auto;
+}
+.box5{
+ weight: 500px;
+ height: auto;
+}
+.crown{
+ color: #FFD700;
+}
+.rank{
+ color: #000000;
+ font-family: 'Bangers', cursive;
+
 }
