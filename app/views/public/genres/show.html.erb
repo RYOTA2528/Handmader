@@ -1,27 +1,46 @@
 <div class="container px-5 px-sm-0">
    <div class="row justify-content-md-center">
-     <h3 class="title text-center"><%= @genre.name %></h3>
+     <h2 class="text-center mt-5 mb-5"><%= @genre.name %></h2>
    </div>
+</div>
+<div class="container">
    <div class="row">
      <% @post_items.each do |post_item| %>
-    <div class="row card offset-1">
-     <div class="card-body">
-       <h5 class="card-title"><%=post_item.name %></h5>
-       <%= link_to  public_post_item_path(post_item) do %>
-       <p class="card-image"><%= image_tag post_item.images[0] ,width:200, height:200 %></p>
-       <% end %>
-       <ここにいいね&ファボをつける>
-        <div><br />
+     <div class="col-md-4 mx-auto my-2">
+       <div class="card1">
+         <div class="card-body text-white">
+           <%= link_to  public_post_item_path(post_item) do %>
+           <p><%= image_tag post_item.images[0] , class: "card-image" %></p>
+        <% end %>
+        <div class="avatar_image">
         <%= link_to  public_user_path(post_item.user) do %>
           <% if post_item.user.avatar.attached? %>
           <%= image_tag post_item.user.avatar.variant(resize:'100x100').processed %>
           <% else %>
           <%= image_tag ("no_image.png"), size: '100x100'  %>
           <% end %>
+          <br/>
+          <br/>
+          <div class="row">
+            <div class="itemname mt-2">
+             <h6><strong><%=post_item.name %></strong></h6>
+            </div>
+          </div>
         <% end %>
        </div>
+      <div class="row pl-2">
+       <h4><i class="far fa-comment comment pl-3"></i></h4>
+       <div class="pl-1">
+           <strong><%= "#{post_item.comments.count}" %></strong>
+       </div>
+       <h4><i class="fas fa-star favorite pl-3"></i></h4>
+       <div class="pl-1">
+           <strong><%= "#{post_item.favorites.count}" %></strong>
+       </div>
+      </div>
       </div>
      </div>
-     <% end %>
+    </div>
+    <% end %>
    </div>
- </div>
+</div>

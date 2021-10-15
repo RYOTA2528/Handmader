@@ -1,5 +1,14 @@
-   <h3 class="text-center"><strong>人気投稿作品ランキング!!</strong></h3><br/>
-  <div class="d-flex justify-content-center">
+<main>
+<div class="card">
+  <%= image_tag "ranking_background.png", class: "card-img1" %>
+</div>
+</main>
+<div class="row pt-3 ml-3">
+  <div class="col-md-6">
+     <h2><span>01</span>人気投稿作品ランキング</h2><br/>
+  </div>
+</div>
+  <div class="d-flex justify-content-center mx-md-auto">
   <% @favorite_ranks.each.with_index(1) do |post_item, i| %>
   <i class="fas fa-crown crown">&nbsp;<h4 class="rank">第<%= i %>位</h4> </i>
     <%= render partial: 'post_item', locals:{ post_item: post_item} %>
@@ -7,11 +16,35 @@
   </div>
   <br/>
   <br/>
-  <h3 class="text-center"><strong>週間ランキング!!</strong></h3><br/>
+<div class="row pt-3 ml-md-3">
+  <div class="col-md-6">
+     <h2><span>02</span>週間ランキング</h2><br/>
+  </div>
+</div>
     <div class="d-flex justify-content-center">
-  <% @post_item_ranks.each.with_index(1) do |post_item, i| %>
+<% if @weekly_ranks.present? %>
+  <% @weekly_ranks.each.with_index(1) do |post_item, i| %>
+  <i class="fas fa-crown crown ">&nbsp;<h4 class="rank">第<%= i %>位</h4> </i>
+    <%= render partial: 'post_item', locals:{ post_item: post_item} %>
+  <% end %>
+<% else %>
+   <h1>Sorry, no posts yet today.</h1>
+<% end %>
+</div>
+<br/>
+<div class="row pt-3 ml-md-3">
+  <div class="col-md-6">
+     <h2><span>03</span>日別ランキング</h2><br/>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+<% if @daily_ranks.present? %>
+  <% @daily_ranks.each.with_index(1) do |post_item, i| %>
   <i class="fas fa-crown crown">&nbsp;<h4 class="rank">第<%= i %>位</h4> </i>
     <%= render partial: 'post_item', locals:{ post_item: post_item} %>
   <% end %>
-  </div>
-  <br/>
+<% else %>
+  <h1>Sorry, no posts yet today.</h1>
+<% end %>
+</div>
+<br/>

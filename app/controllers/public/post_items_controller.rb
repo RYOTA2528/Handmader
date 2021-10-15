@@ -29,7 +29,7 @@ class Public::PostItemsController < ApplicationController
      @genres= Genre.all
      @search = PostItem.ransack(params[:q])
      @post_items = @search.result
-     @post_items = PostItem.all.page(params[:page]).per(3)
+     @post_items = PostItem.all.page(params[:page]).per(6)
   end
 
   def edit
@@ -66,7 +66,8 @@ class Public::PostItemsController < ApplicationController
   # お気に入り数ランキング
   def ranking
     @favorite_ranks = PostItem.find(Favorite.group(:post_item_id).order('count(post_item_id)desc').limit(5).pluck(:post_item_id))
-    @post_item_ranks = PostItem.find(Favorite.group(:post_item_id).where(created_at: Time.current.all_month).order('count(post_item_id)desc').limit(5).pluck(:post_item_id))
+    @weekly_ranks = PostItem.find(Favorite.group(:post_item_id).where(created_at: Time.current.all_month).order('count(post_item_id)desc').limit(5).pluck(:post_item_id))
+    @daily_ranks = PostItem.find(Favorite.group(:post_item_id).where(created_at: Time.current.all_day).order('count(post_item_id)desc').limit(5).pluck(:post_item_id))
     @post_items = PostItem.order("created_at DESC")
   end
 
