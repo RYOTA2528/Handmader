@@ -38,6 +38,12 @@ class Public::PostItemsController < ApplicationController
 
   def update
     @post_item = PostItem.find(params[:id])
+    if params[:post_item][:image_ids]
+      params[:post_item][:image_ids].each do |image_id|
+        image = @post_item.images.find(image_id)
+        image.purge
+      end
+    end
     if @post_item.update(post_item_params)
       flash[:notice]='プロフィールが登録されました。'
        redirect_to public_user_path(current_user)
