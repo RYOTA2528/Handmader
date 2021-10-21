@@ -24,36 +24,40 @@ class Public::PostItemsController < ApplicationController
     # @post_items = @user.post_items.page(params[:page]).reverse_order
   end
 
-
   def index
      @genres= Genre.all
      @search = PostItem.ransack(params[:q])
+    # @posts = PostItem.all.page(params[:page]).per(6)
      @post_items = @search.result
-     @post_items = PostItem.all.page(params[:page]).per(6)
   end
 
   def edit
     @post_item = PostItem.find(params[:id])
+    # if @post_item.update
+    # #   flash[:success] = "編集に成功しました"
+    # #   redirect_to public_post_item_path(@post_item)
+    # # else
+    # #   render :edit
+    # end
   end
 
   def update
     @post_item = PostItem.find(params[:id])
     if params[:post_item][:image_ids]
       params[:post_item][:image_ids].each do |image_id|
-        image = @post_item.images.find(image_id)
+        image = post_item.images.find(image_id)
         image.purge
       end
     end
     if @post_item.update(post_item_params)
-      flash[:notice]='プロフィールが登録されました。'
-       redirect_to public_user_path(current_user)
+      flash[:notice]='作品の編集が完了しました'
+       redirect_to public_post_item_path(@post_item)
     else
       render :edit
     end
   end
 
   def destroy
-
     @post_item = PostItem.find(params[:id])
     @post_item.images.each do |image|
       image.purge

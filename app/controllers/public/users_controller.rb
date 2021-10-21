@@ -6,7 +6,7 @@ class Public::UsersController < ApplicationController
     @post_items = @user.post_items
     @comments =Comment.all
     # PostImageモデル作成後の記述。下記で現在のユーザーの投稿のみを取得できる
-    @post_items = @user.post_items.page(params[:page]).reverse_order
+    @post_items = @user.post_items.page(params[:page]).per(4)
 #フォロー・フォロワーどうしは使用可能なチャット機能を作成。下記にコードを記述
 # 現在のユーザーのルームIDと招待を受ける側ユーザーのチャットルームIDが一緒ならば既に作成済みルームを選び。falseならチャットルーム・Entryの新規作成を。
     @currentUserEntry = Entry.where(user_id: current_user.id)
@@ -71,7 +71,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-   params.require(:user).permit(:nickname,:avatar,:profile, images: [])
+   params.require(:user).permit(:nickname,:avatar,:profile,:background, images: [])
   end
 
 end

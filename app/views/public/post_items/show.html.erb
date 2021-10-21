@@ -1,40 +1,48 @@
 <p id="notice"><%= notice %></p>
 <div class="container px-5 px-sm-0">
-   <div class="row justify-content-md-center">
-     <h4><%=@post_item.name %></h4>
-   </div><br />
-    <div class="row justify-content-md-center">
-      <div class="">
-        <% @post_item.images.each do |image| %>
-          <%= image_tag(image, width:250) %>
-        <% end %>
-      </div>
+<div class="card">
+  <div class="card-img5">
+  <div class="row">
+  　<div class="slider1">
+    　<% @post_item.images.each do |image| %>
+      　<%= image_tag image, class: "show-img" %>
+      <% end %>
+    </div>
+  </div>
+    </div>
+    <div class="card-body5">
     <!--お気に入りボタンの実装-->
+    <div class="row">
+     <div class="mx-auto">
       <div id="favorite_area_<%= @post_item.id %>">
         <%= render partial: "public/favorites/favorite", locals: { post_item: @post_item } %>
       </div>
-    <%# end %>
-    </div><br />
+     </div>
+    </div>
+    <!--</div><br />-->
     <div class="row text-center">
-      <div class="col ">
+      <div class="col">
         <h4><strong><%= @post_item.name %></strong></h4>
       </div>
     </div>
     <div class="row justify-content-md-center">
       <div class="col text-center">
+        <h6>【投稿内容】</h6>
+       <div class="card-text border col-md-5 mx-auto">
         <%=@post_item.text %>
+       </div>
       </div>
-    </div>
+    </div><br/>
     <div class="text-center">
-    <h5><span>【登録ジャンル】</span></h5>
+    <h6>【登録ジャンル】</h6>
     </div>
     <div class="row justify-content-md-center mr-auto ml-auto">
       <% @post_item.genres.each do |genre| %>
       <div class="col-md-5 box text-center">
         <%= genre.name %>
       </div>
+      <% end %>
     </div>
-    <% end %>
     <% if @post_item.user_id == current_user.id %>
     <div class="row">
       <div class="col text-center">
@@ -43,6 +51,7 @@
       </div>
     <% end %>
     </div>
+  </div>
     <div>
       <p>コメント件数：<%= @post_item.comments.count %></p>
       <% @post_item.comments.each do |comment| %>
@@ -65,4 +74,5 @@
         <%= f.submit "送信する" %>
       <% end %>
     </div>
+</div>
 </div>

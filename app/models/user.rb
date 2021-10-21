@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :profile, length: { maximum: 200 }
 
   has_one_attached :avatar
+  has_one_attached :background
   has_many_attached :images
 
 # DM機能の作成

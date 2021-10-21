@@ -41,3 +41,4 @@ $(document).ready(function () {
     hidePrevious : false
   });
 });
+require("./slick")

@@ -62,7 +62,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'dotenv-rails'
-gem 'kaminari'
 gem 'pry-rails'
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
@@ -70,3 +69,5 @@ gem 'font-awesome-sass', '~> 5.13'
 gem 'image_processing'
 gem 'mini_magick'
 gem 'ransack'
+gem 'kaminari'
+gem 'activestorage-validator'

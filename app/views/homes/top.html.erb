@@ -24,29 +24,32 @@
       </div>
     </div>
    </div>
-    <!-- Three columns of text below the carousel -->
     <div class="row pt-2">
       <div class="card text-center col-md-3 mx-auto">
         <div class="card-header">
           Step1
         </div>
-        <div class="card-body">
-          <h4 class="card-title text-white"><strong>登録をしよう!</strong></h4>
+        <div class="card-body1">
+          <h4 class="card-title text-white pt-5"><br/><strong>登録をしよう!</strong></h4>
           <p class="card-text text-white">First, register as a member! If you are already registered, please login.</p>
-          <%= link_to "登録する/ログインする", new_public_post_item_path, class: "btn btn-primary" %>
+          <%= link_to "ログインする", new_user_session_path, class: "btn btn-primary my-auto" %>
         </div>
         <div class="card-footer text-muted">
-          ～新規登録・ログイン～
+          ～ログイン～
         </div>
       </div>
       <div class="card text-center col-md-3 mx-auto">
         <div class="card-header">
           Step2
         </div>
-        <div class="card-body">
-          <h4 class="card-title text-white"><strong>プロフィールを完成させよう!</strong></h4>
+        <div class="card-body1">
+          <h4 class="card-title text-white pt-5"><strong><br/>プロフィールを完成させよう!</strong></h4>
           <p class="card-text text-white">Complete your profile first! Thank you for your cooperation.</p><br/>
-          <%= link_to "マイページへ", public_user_path(@user.id), class: "btn btn-primary" %>
+          <% if user_signed_in? %>
+          <%= link_to "マイページへ", public_user_path(current_user.id), class: "btn btn-primary my-auto" %>
+          <% else %>
+          <%= link_to "登録後マイページへ",new_user_registration_path, class: "btn btn-primary my-auto" %>
+          <% end %>
         </div>
         <div class="card-footer text-muted">
           ～マイページ～
@@ -56,10 +59,10 @@
         <div class="card-header">
           Step3
         </div>
-        <div class="card-body">
-          <h4 class="card-title text-white"><strong>作品を投稿しよう!</strong></h4>
+        <div class="card-body1">
+          <h4 class="card-title text-white pt-5"><strong><br/>作品を投稿しよう!</strong></h4>
           <p class="card-text text-white">Let's start submitting our work! Let's get started!</p><br/>
-          <%= link_to "新規投稿する", new_public_post_item_path, class: "btn btn-primary" %>
+          <%= link_to "新規投稿する", new_public_post_item_path, class: "btn btn-primary my-auto" %>
         </div>
         <div class="card-footer text-muted">
           ～新規投稿～
@@ -113,6 +116,6 @@
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-end"><a href="#">トップに戻る</a></p>
-    <p>© 2017-2021 Company, Inc. ·</p>
+    <p> 2021 Company, Inc. ·</p>
   </footer>
 </main>
