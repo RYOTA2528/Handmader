@@ -1,19 +1,23 @@
 <h3 class="title text-center">フォロー一覧画面</h3>
 <table class="ml-5">
  <% @followings.each do |user| %>
+ <div class="row">
   <tr>
-    <td>
+    <td class="col-md mx-auto text-center">
       <%= link_to  public_user_path(user) do %>
         <% if user.avatar.attached? %>
-          <%= image_tag user.avatar.variant(resize:'50x50').processed %>
+          <%= image_tag user.avatar.variant(resize:'100x100').processed %>
         <% else %>
-          <%= image_tag ("no_image.png"), size: '50x50'  %>
+          <%= image_tag ("no_image.png"), size: '100x100'  %>
         <% end %>
       <% end %>
+    <div class="col-md text-center">
+    <strong><%=user.nickname %></strong>
+    </div>
     </td>
-    <td><%=user.nickname %></td>
-    <td><%=user.profile %></td>
+    <!--<td><%#=user.profile %></td>-->
   </tr>
+  </div>
  <% end %>
 </table>
 <%= link_to 'マイページ', public_user_path(current_user.id), class: 'btn btn--blue btn--cubic' %>

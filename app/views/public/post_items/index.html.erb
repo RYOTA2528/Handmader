@@ -12,7 +12,7 @@
 <div>
 <section class="py-5 text-center container pt-6">
   <h3 class="genre_title text-center"><strong>ジャンル検索一覧</strong></h3>
-  <div class="row col-md-10 justify-content-center box1 mx-auto ">
+  <div class="row col-md-4 justify-content-center box1 mx-auto ">
     <%= form_tag public_post_items_path, method: :get do %>
     <% @genres.each do |genre| %>
       <div>
@@ -27,7 +27,7 @@
      <% @post_items.each do |post_item| %>
      <div class="col-md-4 mx-auto my-2">
        <div class="card1">
-         <div class="card-body text-white">
+         <div class="card-body">
            <%= link_to  public_post_item_path(post_item) do %>
            <p><%= image_tag post_item.images[0] , class: "card-image" %></p>
         <% end %>

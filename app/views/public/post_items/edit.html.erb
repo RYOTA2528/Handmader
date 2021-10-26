@@ -25,11 +25,6 @@
     </div>
     <% end %>
   </div>
-    <!--  <div class="form-group col-md-3">-->
-    <!--   <%#= f.label :images, '画像を投稿する' %>-->
-    <!--   <%#= f.file_field :images, multiple: true %>-->
-    <!--  </div>-->
-    <!--</div>-->
     <div class="row justify-content-md-center">
       <div class="form-group">
        <%= f.label :name, '投稿作品名' %><br />
@@ -45,12 +40,10 @@
     <div class="row justify-content-md-center">
       <div class="form-group">
         <%= f.label :genre, 'ジャンル' %>
-        <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |genre| %>
-          <%= genre.label do %>
-            <%= genre.check_box %>
-            <%= genre.text %>
+        <%= f.collection_radio_buttons :genre_ids, Genre.all, :id, :name do |genre| %>
+          <%=genre.label { genre.radio_button }%>
+          <%=genre.text %>
           <% end %>
-        <% end %>
       </div>
     </div>
     <div class="row justify-content-md-center">

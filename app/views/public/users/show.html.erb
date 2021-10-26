@@ -37,8 +37,8 @@
          </div>
          <div class="row">
            <div class="col-md-5  mx-auto">
-               <h5 class="text-center">-各種リンク-</h5>
             <% if @user.id == current_user.id %>
+            <h5 class="text-center">-各種リンク-</h5>
             <%= link_to "プロフィール編集", edit_public_user_path(@user) %><br />
             <%= link_to "退会する", public_unsubscribe_path(@user) %><br />
             <%= link_to '投稿フォーム', new_public_post_item_path(@user) %><br />

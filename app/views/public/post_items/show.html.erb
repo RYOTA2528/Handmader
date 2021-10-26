@@ -1,16 +1,15 @@
 <p id="notice"><%= notice %></p>
 <div class="container px-5 px-sm-0">
-<div class="card">
-  <div class="card-img5">
-  <div class="row">
-  　<div class="slider1">
-    　<% @post_item.images.each do |image| %>
-      　<%= image_tag image, class: "show-img" %>
-      <% end %>
+<div class="card col-md-8 mx-auto">
+  <h2>投稿作品</h2>
+  <div class="card-img2 mb-5">
+   <div class="slider1">
+    <% @post_item.images.each do |image| %>
+      <%= image_tag image, class: "show-img mt-0 pb-5" %>
+       <% end %>
     </div>
   </div>
-    </div>
-    <div class="card-body5">
+    <div class="card-body">
     <!--お気に入りボタンの実装-->
     <div class="row">
      <div class="mx-auto">
@@ -28,7 +27,7 @@
     <div class="row justify-content-md-center">
       <div class="col text-center">
         <h6>【投稿内容】</h6>
-       <div class="card-text border col-md-5 mx-auto">
+       <div class="card-text border col-md-10 mx-auto">
         <%=@post_item.text %>
        </div>
       </div>
@@ -37,11 +36,11 @@
     <h6>【登録ジャンル】</h6>
     </div>
     <div class="row justify-content-md-center mr-auto ml-auto">
-      <% @post_item.genres.each do |genre| %>
+      <%# @post_item.genre_ids.each do |name| %>
       <div class="col-md-5 box text-center">
-        <%= genre.name %>
+        <%= @genre_name %>
       </div>
-      <% end %>
+      <%# end %>
     </div>
     <% if @post_item.user_id == current_user.id %>
     <div class="row">
@@ -51,7 +50,6 @@
       </div>
     <% end %>
     </div>
-  </div>
     <div>
       <p>コメント件数：<%= @post_item.comments.count %></p>
       <% @post_item.comments.each do |comment| %>
@@ -68,11 +66,12 @@
          <% end %>
       <% end %>
     </div>
-    <div>
+    <div class="row">
       <%= form_with(model:[@post_item, @comment], url: public_post_item_comments_path(@post_item, @comment), method: :post, local: true) do |f| %>
-        <%= f.text_area :content, rows:'7',placeholder: "（例）コメントを記載してください（300文字まで）" %>
+        <%= f.text_area :content,size: "50x10", rows:'4',placeholder: "（例）コメントを記載してください（300文字まで）" %>
         <%= f.submit "送信する" %>
       <% end %>
+    </div>
     </div>
 </div>
 </div>

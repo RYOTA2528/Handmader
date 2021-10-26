@@ -53,6 +53,8 @@ background-image: image-url('profile_background.jpg');
 object-fit: cover;
 background-position: center center;
 width: 100%;
+max-width: 300px;
+max-height: 300px;
 float: right;
 padding-left: 20px;
 }

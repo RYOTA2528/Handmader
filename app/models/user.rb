@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :avatar, presence: true
+  # validates :avatar, presence: true
   # 下記プロフィールの自己紹介文のため200文字までとする。
   validates :profile, length: { maximum: 200 }
 
