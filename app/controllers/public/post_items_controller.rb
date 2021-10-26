@@ -20,9 +20,6 @@ class Public::PostItemsController < ApplicationController
 
   def show
     @post_item = PostItem.find(params[:id])
-
-    # p 'output rails code.' # どこで出力しているか分かりやすくするため
-    # p @post_item
     @comment = Comment.new
     # PostImageモデル作成後の記述。下記のようにすると現在のユーザーの投稿のみを取得できる
     # @post_items = @user.post_items.page(params[:page]).reverse_order

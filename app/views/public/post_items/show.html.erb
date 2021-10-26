@@ -36,11 +36,11 @@
     <h6>【登録ジャンル】</h6>
     </div>
     <div class="row justify-content-md-center mr-auto ml-auto">
-      <%# @post_item.genre_ids.each do |name| %>
+      <% @post_item.genres.each do |genre| %>
       <div class="col-md-5 box text-center">
-        <%= @genre_name %>
+        <%= genre.name %>
       </div>
-      <%# end %>
+      <% end %>
     </div>
     <% if @post_item.user_id == current_user.id %>
     <div class="row">

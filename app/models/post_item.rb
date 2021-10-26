@@ -9,11 +9,11 @@ class PostItem < ApplicationRecord
   validates :name, presence: true
   # validates :post_item_genre_ids, uniqueness: true
   # validates :genre, uniqueness: true
-  # validates :genres, uniqueness: true
   validates :text, length: { maximum: 1000 }
   belongs_to :user, optional: true
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  validates :genres, presence: true
 
 
 end
