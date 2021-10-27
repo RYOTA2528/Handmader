@@ -14,6 +14,10 @@ Rails.application.routes.draw do
      passwords: 'admin/passwords'
    }
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
 
 
 namespace :admin do
