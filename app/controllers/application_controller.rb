@@ -18,9 +18,6 @@ class ApplicationController < ActionController::Base
     #   new_admin_session_path
     #   end
     #  end
-
-
-
   protected
 
    def set_search
@@ -35,4 +32,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
+  
+  # def set_host
+  #   Rails.application.routes.default_url_options[:host] = request.host_with_port
+  # end
 end
