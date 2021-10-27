@@ -32,7 +32,7 @@ Rails.application.configure do
 
 
 
-  config.action_mailer.default_url_options = { host: 'https://83b620876a334e69ae0c4c18c46ec7dc.vfs.cloud9.ap-northeast-1.amazonaws.com/?_c9_id=livepreview0&_c9_host=https://ap-northeast-1.console.aws.amazon.com' }
+  config.action_mailer.default_url_options = { host: 'https://83b620876a334e69ae0c4c18c46ec7dc.vfs.cloud9.ap-northeast-1.amazonaws.com' }
   config.action_mailer.perform_caching = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
