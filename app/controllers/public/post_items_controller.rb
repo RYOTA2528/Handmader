@@ -21,25 +21,17 @@ class Public::PostItemsController < ApplicationController
   def show
     @post_item = PostItem.find(params[:id])
     @comment = Comment.new
-    # PostImageモデル作成後の記述。下記のようにすると現在のユーザーの投稿のみを取得できる
-    # @post_items = @user.post_items.page(params[:page]).reverse_order
   end
 
   def index
      @genres= Genre.all
      @search = PostItem.ransack(params[:q])
-    # @posts = PostItem.all.page(params[:page]).per(6)
      @post_items = @search.result
+     @post_items =@post_items.page(params[:page]).per(6)
   end
 
   def edit
     @post_item = PostItem.find(params[:id])
-    # if @post_item.update
-    # #   flash[:success] = "編集に成功しました"
-    # #   redirect_to public_post_item_path(@post_item)
-    # # else
-    # #   render :edit
-    # end
   end
 
   def update
