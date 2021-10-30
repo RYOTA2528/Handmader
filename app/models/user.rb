@@ -4,9 +4,20 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # validates :avatar, presence: true
-  # 下記プロフィールの自己紹介文のため200文字までとする。
-  validates :profile, length: { maximum: 200 }
+# 新規会員登録の際のバリデーション
+   validates :name, presence: true
+   validates :email, presence: true
+   validates :password, presence: true, on: :create
+
+# プロフィール用のバリデーション
+  with_options on: :update do
+   validates :nickname, presence: true
+   validates :profile, presence: true, length: { maximum: 200 }
+end
+
+# def create?
+
+# end
 
   has_one_attached :avatar
   has_one_attached :background
@@ -53,5 +64,19 @@ class User < ApplicationRecord
   def delete_follow(user)
     following_relationships.find_by(following_id: user.id).destroy
   end
+
+#   def update_without_current_password(params, *options)
+#     params.delete(:current_password)
+
+#     if params[:password].blank? && params[:password_confirmation].blank?
+#       params.delete(:password)
+#       params.delete(:password_confirmation)
+#     end
+
+#     result = update_attributes(params, *options)
+#     clean_up_passwords
+#     result
+#   end
+
 
 end

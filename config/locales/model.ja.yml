@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    models:
+      post_item: 投稿
+    attributes:
+      post_item:
+        name: 投稿作品名
+        text: 投稿作品説明文
+        genres: ジャンル名
+        images: 投稿
+      user:
+        name: ユーザー名
+        profile: プロフィール紹介文
+        nickname: ユーザーニックネーム
+        email: メールアドレス
+        password: パスワード
+        
+  devise:
+    sessions:
+      signed_in: "Signed in successfully."

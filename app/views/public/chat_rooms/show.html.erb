@@ -1,13 +1,16 @@
+<div class="container">
 <p id="notice"><%= notice %></p>
 <!--フォローどうしの情報を表示する部分-->
 <% @users.each do |e| %>
-<div>
-  <% if e.avatar.attached? %>
-    <%= image_tag e.avatar.variant(resize:'60x60').processed %>
-  <% else %>
-    <%= image_tag ("no_image.png"), size: '60x60' %>
-  <% end %>
-  <%= e.nickname %>
+<div class="row">
+  <div>
+    <% if e.avatar.attached? %>
+      <%= image_tag e.avatar.variant(resize:'100x100').processed %>
+    <% else %>
+      <%= image_tag ("no_image.png"), size: '100x100' %>
+    <% end %>
+    <%= e.nickname %>
+  </div>
 </div>
 <% end %>
 <!--チャット表示部分-->
@@ -23,7 +26,7 @@
         <% end %>
       </div>
       <div class="chat-area">
-        <div class="chat-hukidashi">
+        <div class="chat-hukidashi break-word">
           <%= c.chat %><br />
           <h6><%= c.created_at.strftime("%Y-%m-%d %H:%M") %></h6>
         </div>
@@ -35,11 +38,12 @@
 <!--チャットの新規投稿欄-->
 <div>
   <%= form_with model: @chat, url: public_chats_path, method: :post, local: true do |f| %>
-    <%= f.text_area :chat, rows:'5',placeholder: "メッセージを入力してください" %>
+    <%= f.text_area :chat,size: "70x5", rows:'5',placeholder: "メッセージを入力してください" %>
     <%= f.hidden_field :chat_room_id, value: @chat_room.id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.submit "送信する" %>
   <% end %>
+</div>
 </div>
 
 
