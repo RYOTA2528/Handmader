@@ -12,13 +12,13 @@
 <div>
 <section class="py-5 text-center container pt-6">
   <h3 class="genre_title text-center"><strong>ジャンル検索一覧</strong></h3>
-  <div class="row col-md-4 justify-content-center box1 mx-auto ">
+  <div class="row justify-content-center box1 mx-auto ">
+      <div class="col-md-4 mx-au">
     <%= form_tag public_post_items_path, method: :get do %>
     <% @genres.each do |genre| %>
-      <div>
         <%= link_to genre.name, public_genre_path(genre.id), class: "btn btn-outline-primary col-md my-2 justify-content-center" %>
-      </div>
-    <% end %>
+       <% end %>
+    </div>
   </div>
 </section><br/>
 </div>

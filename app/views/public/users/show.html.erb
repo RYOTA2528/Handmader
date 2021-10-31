@@ -19,7 +19,7 @@
          <% end %>
          </div>
       <!--フォロー・フォロワー人数・リンク挿入-->
-         <div class="following text-center text-center">
+         <div class="following text-center text-center mt-">
           <%= link_to following_public_user_path(@user.id) do %>
             <h6>フォロー<%= @user.following.count %>人</h6>
           <% end %>
@@ -60,7 +60,7 @@
        <!--チャットルームがまだ作成されてない場合は、下記で新規作成する-->
           <%= form_with(url: public_chat_rooms_path, method: :post, local: true) do |f| %>
             <%= f.hidden_field :user_id, value: @user.id %>
-            <%= f.submit '新規チャットルームを作る', class: "btn btn-primary col" %>
+            <%= f.submit '新規チャットルーム作成　(※)相互フォローでやり取り可能', class: "btn btn-primary col" %>
           <% end %>
          <% end %>
        <% end %>

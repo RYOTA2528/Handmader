@@ -1,77 +1,76 @@
 <p id="notice"><%= notice %></p>
 <div class="container px-5 px-sm-0">
-<div class="card col-md-8 mx-auto">
-  <h2>投稿作品</h2>
-  <div class="card-img2 mb-5">
-   <div class="slider1">
-    <% @post_item.images.each do |image| %>
-      <%= image_tag image, class: "show-img mt-0 pb-5" %>
-       <% end %>
-    </div>
-  </div>
-    <div class="card-body">
-    <!--お気に入りボタンの実装-->
-    <div class="row">
-     <div class="mx-auto">
-      <div id="favorite_area_<%= @post_item.id %>">
-        <%= render partial: "public/favorites/favorite", locals: { post_item: @post_item } %>
-      </div>
-     </div>
-    </div>
-    <!--</div><br />-->
-    <div class="row text-center">
-      <div class="col">
-        <h4><strong><%= @post_item.name %></strong></h4>
+  <div class="card col-md-8 mx-auto">
+    <h2>投稿作品</h2>
+    <div class="card-img2 mb-5">
+      <div class="slider1">
+        <% @post_item.images.each do |image| %>
+        <%= image_tag image, class: "show-img mt-0 pb-5" %>
+        <% end %>
       </div>
     </div>
-    <div class="row justify-content-md-center">
-      <div class="col text-center">
-        <h6>【投稿内容】</h6>
-       <div class="card-text border col-md-10 mx-auto">
-        <%=@post_item.text %>
+      <div class="card-body">
+      <!--お気に入りボタンの実装-->
+      <div class="row">
+       <div class="mx-auto">
+        <div id="favorite_area_<%= @post_item.id %>">
+          <%= render partial: "public/favorites/favorite", locals: { post_item: @post_item } %>
+        </div>
        </div>
       </div>
-    </div><br/>
-    <div class="text-center">
-    <h6>【登録ジャンル】</h6>
-    </div>
-    <div class="row justify-content-md-center mr-auto ml-auto">
-      <% @post_item.genres.each do |genre| %>
-      <div class="col-md-5 box text-center">
-        <%= genre.name %>
+      <div class="row text-center">
+        <div class="col">
+          <h4><strong><%= @post_item.name %></strong></h4>
+        </div>
       </div>
+      <div class="row justify-content-md-center">
+        <div class="col text-center">
+          <h6>【投稿内容】</h6>
+         <div class="card-text border col-md-10 mx-auto">
+          <%=@post_item.text %>
+         </div>
+        </div>
+      </div><br/>
+      <div class="text-center">
+      <h6>【登録ジャンル】</h6>
+      </div>
+      <div class="row justify-content-md-center mr-auto ml-auto">
+        <% @post_item.genres.each do |genre| %>
+        <div class="col-md-5 box text-center">
+          <%= genre.name %>
+        </div>
+        <% end %>
+      </div>
+      <% if @post_item.user_id == current_user.id %>
+      <div class="row">
+        <div class="col text-center">
+          <%= link_to '編集', edit_public_post_item_path(@post_item.id), class:"mr-5" %>
+          <%= link_to '削除', public_post_item_path(@post_item.id), method: :delete, data: { confirm: '削除してよろしいですか?' } %>
+        </div>
       <% end %>
-    </div>
-    <% if @post_item.user_id == current_user.id %>
-    <div class="row">
-      <div class="col text-center">
-        <%= link_to '編集', edit_public_post_item_path(@post_item.id), class:"mr-5" %>
-        <%= link_to '削除', public_post_item_path(@post_item.id), method: :delete, data: { confirm: '削除してよろしいですか?' } %>
       </div>
-    <% end %>
-    </div>
-    <div>
-      <p>コメント件数：<%= @post_item.comments.count %></p>
-      <% @post_item.comments.each do |comment| %>
-        <p><% if @post_item.user.avatar.attached? %>
-             <%= image_tag comment.user.avatar.variant(resize:'50x50').processed %>
-           <% else %>
-             <%= image_tag ("no_image.png"),size: '50x50' %>
+      <div>
+        <p>コメント件数：<%= @post_item.comments.count %></p>
+        <% @post_item.comments.each do |comment| %>
+          <p><% if @post_item.user.avatar.attached? %>
+               <%= image_tag comment.user.avatar.variant(resize:'50x50').processed %>
+             <% else %>
+               <%= image_tag ("no_image.png"),size: '50x50' %>
+             <% end %>
+          </p>
+           <%= comment.user.nickname %></p>
+           <%= comment.created_at.strftime('%Y/%m/%d') %><p><%= comment.content %></p>
+           <% if comment.user == current_user %>
+             <%= link_to "削除", public_post_item_comment_path(comment.post_item, comment), method: :delete %>
            <% end %>
-        </p>
-         <%= comment.user.nickname %></p>
-         <%= comment.created_at.strftime('%Y/%m/%d') %><p><%= comment.content %></p>
-         <% if comment.user == current_user %>
-           <%= link_to "削除", public_post_item_comment_path(comment.post_item, comment), method: :delete %>
-         <% end %>
-      <% end %>
-    </div>
-    <div class="row">
-      <%= form_with(model:[@post_item, @comment], url: public_post_item_comments_path(@post_item, @comment), method: :post, local: true) do |f| %>
-        <%= f.text_area :content,size: "50x10", rows:'4',placeholder: "（例）コメントを記載してください（300文字まで）" %>
-        <%= f.submit "送信する" %>
-      <% end %>
-    </div>
-    </div>
-</div>
+        <% end %>
+      </div>
+      <div class="row">
+        <%= form_with(model:[@post_item, @comment], url: public_post_item_comments_path(@post_item, @comment), method: :post, local: true) do |f| %>
+          <%= f.text_area :content,size: "50x10", rows:'4',placeholder: "（例）コメントを記載してください（300文字まで）" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      </div>
+      </div>
+  </div>
 </div>

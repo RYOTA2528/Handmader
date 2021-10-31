@@ -1,6 +1,6 @@
 class PostItem < ApplicationRecord
   belongs_to :user
-  has_many :post_item_genres
+  has_many :post_item_genres, dependent: :destroy
   has_many :genres, through: :post_item_genres
 
   has_many_attached :images
