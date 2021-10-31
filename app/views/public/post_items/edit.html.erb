@@ -39,11 +39,12 @@
     </div>
     <div class="row justify-content-md-center">
       <div class="form-group">
-        <%= f.label :genre, 'ジャンル' %>
         <%= f.collection_radio_buttons :genre_ids, Genre.all, :id, :name do |genre| %>
-          <%=genre.label { genre.radio_button }%>
-          <%=genre.text %>
+          <%= genre.label do %>
+          <%= genre.label { genre.radio_button }%>
+          <%= genre.text %>
           <% end %>
+        <% end %>
       </div>
     </div>
     <div class="row justify-content-md-center">

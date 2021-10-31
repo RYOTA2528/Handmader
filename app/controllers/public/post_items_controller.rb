@@ -32,10 +32,13 @@ class Public::PostItemsController < ApplicationController
 
   def edit
     @post_item = PostItem.find(params[:id])
+    @genres= Genre.all
   end
 
   def update
     @post_item = PostItem.find(params[:id])
+    @post_item.genre_ids = params[:post_item][:genre_ids]
+    # binding.pry
     if params[:post_item][:image_ids]
       params[:post_item][:image_ids].each do |image_id|
         image = @post_item.images.find(image_id)
