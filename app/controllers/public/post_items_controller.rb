@@ -43,18 +43,23 @@ class Public::PostItemsController < ApplicationController
     @post_item = PostItem.find(params[:id])
     if post_create_user?(@post_item.user)
       @post_item.genre_ids = params[:post_item][:genre_ids]
-    # binding.pry
-      if params[:post_item][:image_ids]
-        params[:post_item][:image_ids].each do |image_id|
-          image = @post_item.images.find(image_id)
-          image.purge
+      image_ids = params[:post_item][:image_ids]
+      unless @post_item.same_amount_images?(image_ids)
+        if image_ids
+          image_ids.each do |image_id|
+            image = @post_item.images.find(image_id)
+            image.purge
+          end
         end
-      end
-      if @post_item.update(post_item_params)
-        flash[:notice]='作品の編集が完了しました'
+        if @post_item.update(post_item_params)
+          flash[:notice]='作品の編集が完了しました'
          redirect_to public_post_item_path(@post_item)
+        else
+          render :edit
+         end
       else
-        render :edit
+        flash[:notice]='画像は全て消せません'
+         render :edit
       end
     end
   end
@@ -90,6 +95,8 @@ class Public::PostItemsController < ApplicationController
   def post_create_user?(user)
    current_user == user
   end
+
+
 
   def post_item_params
    params.require(:post_item).permit(:user_id,:avatar,:name,:text, images: [], genre_ids: [])

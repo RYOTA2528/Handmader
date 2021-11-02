@@ -77,14 +77,14 @@
           <% @post_items.each do |post_item| %>
             <div class="col-md-6">
               <%= link_to  public_post_item_path(post_item.id) do %>
-              <%#= image_tag post_item.images[0] ,width:250, height:250 %>
+              <%= image_tag post_item.images[0] ,width:250, height:250 %>
+              <% end %>
+              <p>
+              <%= link_to  public_post_item_path(post_item.id) do %>
+                  作品名：<%= post_item.name %>
+              <% end %>
+              </p>
             </div>
-          <% end %>
-          <p>
-            <%= link_to  public_post_item_path(post_item.id) do %>
-              作品名：<%= post_item.name %>
-            <% end %>
-          </p>
         <% end %>
       <% if @favorite_list.present? %>
         <% @favorite_list.each do |post_item| %>

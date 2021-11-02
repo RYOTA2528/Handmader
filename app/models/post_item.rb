@@ -10,10 +10,22 @@ class PostItem < ApplicationRecord
   # validates :post_item_genre_ids, uniqueness: true
   # validates :genre, uniqueness: true
   validates :text, presence: true, length: { maximum: 1000 }
+
+
   belongs_to :user, optional: true
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   # validates :genres, presence: true
+
+  def same_amount_images?(images)
+    if images.present?
+      self.images.length == images.length
+    else
+      false
+    end
+  end
+
+
 
 
 end

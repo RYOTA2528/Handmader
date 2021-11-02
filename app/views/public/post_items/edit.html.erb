@@ -13,7 +13,9 @@
     <div class="row">
       <div class="mx-auto d-flex justify-content-md-center flex-wrap">
       <% @post_item.images.each do |image| %>
+      <% if @post_item.images.length > 1 %>
       <%= f.check_box :image_ids, {:multiple => true}, image.id, false %>
+      <% end %>
       <%= image_tag image, size:"250x250"%> <br>
       <% end %>
       </div>
