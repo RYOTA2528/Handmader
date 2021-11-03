@@ -56,7 +56,7 @@ class Public::PostItemsController < ApplicationController
          redirect_to public_post_item_path(@post_item)
         else
           render :edit
-         end
+        end
       else
         flash[:notice]='画像は全て消せません'
          render :edit

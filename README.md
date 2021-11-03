@@ -43,7 +43,7 @@ https://app.diagrams.net/#G1_TxjqnmSENB_rVikRh5WsgU-p1OxczYv
 
 ## チャレンジ要素一覧
 `実装機能一覧へ`
-https://docs.google.com/spreadsheets/d/16emgVcBFCdUZ8CrqATC3B-KBYkZZlcT1rFOV6XCkUxQ/edit#gid=566224576
+https://docs.google.com/spreadsheets/d/16emgVcBFCdUZ8CrqATC3B-KBYkZZlcT1rFOV6XCkUxQ/edit#gid=0
 
 
 
@@ -55,5 +55,5 @@ https://docs.google.com/spreadsheets/d/16emgVcBFCdUZ8CrqATC3B-KBYkZZlcT1rFOV6XCk
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- PhotoAC
+ https://www.photo-ac.com/main/search?q=%E3%83%8F%E3%83%B3%E3%83%89%E3%83%A1%E3%82%A4%E3%83%89&srt=dlrank
