@@ -74,3 +74,6 @@ gem 'ransack'
 gem 'kaminari'
 gem 'activestorage-validator'
 gem 'rails-i18n'
+group :production do
+  gem 'mysql2'
+end
