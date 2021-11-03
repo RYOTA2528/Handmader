@@ -3,7 +3,7 @@
   <div class="row justify-content-md-center">
      <% @favorite_list_page.each do |post_item| %>
        <div class="Box mr-5 my-3">
-        <div class ="col">
+         <div class ="col">
           <%= link_to  public_user_path(post_item.user) do %>
             <% if post_item.user.avatar.attached? %>
               <%= image_tag post_item.user.avatar.variant(resize:'100x100').processed %>
@@ -12,16 +12,16 @@
             <% end %>
            <strong><%=post_item.user.nickname %><h6>check!!</h6></strong>
           <% end %>
-        </div>
-        <div class="col">
+         </div>
+         <div class="col">
           <%= link_to  public_post_item_path(post_item) do %>
             <%= image_tag post_item.images[0] ,width:200, height:200 %><br/>
             <strong><%=post_item.name %><h6>check!!</h6></strong>
           <% end %>
-        </div>
+         </div>
        </div>
      <% end %>
-   </div>
+  </div>
    <div class="row">
      <div class="col-md text-center my-5">
       <%= link_to 'マイページへ戻る', public_user_path(current_user.id), class: 'btn btn--blue btn--cubic'%> 

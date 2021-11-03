@@ -4,6 +4,6 @@ class Genre < ApplicationRecord
   validates :name, presence: true
   has_one_attached :image
   # ActiveRecord用のvalidation
- validates :image, presence: { message: '画像をアップロードしてください' }
+  validates :image, presence: { message: '画像をアップロードしてください' }
 
 end

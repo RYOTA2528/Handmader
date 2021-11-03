@@ -93,7 +93,7 @@ class Public::PostItemsController < ApplicationController
   private
 
   def post_create_user?(user)
-   current_user == user
+    current_user == user
   end
 
 

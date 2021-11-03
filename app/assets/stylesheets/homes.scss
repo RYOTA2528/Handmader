@@ -26,7 +26,7 @@ body {
 }
 
 .body{
-  background-image: image-url('haikei22.png');
+  background-image: image-url("haikei22.png");
   background-size: cover;               /* 全画面 */
   background-attachment: fixed;         /* 固定 */
   background-position: center center;   /* 縦横中央 */
@@ -44,8 +44,8 @@ body {
   color         : #ffffff;     /* 文字色     */
   line-height   : 1em;         /* 1行の高さ  */
   transition    : .3s;         /* なめらか変化 */
-  box-shadow    : 11px 11px 3px #666666;  /* 影の設定 */
-  border        : 2px solid #000066;    /* 枠の指定 */
+  box-shadow    : 11px 11px 3px #666666;
+  border        : 2px solid #000066;    
 }
 .button:hover {
   box-shadow    : none;        /* カーソル時の影消去 */

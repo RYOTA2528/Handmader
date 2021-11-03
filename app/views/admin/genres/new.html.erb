@@ -3,7 +3,7 @@
        <h2>ジャンル新規登録画面</h2>
     </div><br />
   <%= form_with model: @genre, url: admin_genres_path(@genre), local: true do |f| %>
-  <%= render 'admin/error_form', locals: { genre: @genre } %>
+    <%= render 'admin/error_form', locals: { genre: @genre } %>
     <div class="row justify-content-md-center">
       <div class="form-group col-md-3">
         <h4><%= f.label :name, "ジャンル名" %></h4>
@@ -13,7 +13,7 @@
     <div class="row justify-content-md-center">
       <div class="form-group">
         <h4><%= f.label :image, "ジャンルイメージ画像" %></h4><br/>
-            <%= f.file_field :image %>
+        <%= f.file_field :image %>
       </div>
     </div>
     <div class="row justify-content-md-center">

@@ -1,54 +1,54 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
- <div class="row">
-  <div class="card justify-content-center">
-    <div class="col-md justify-content-center pl-0 pr-0">
-      <div class=" col-md avatar-background pt-3">
-        <% if @user.avatar.attached? %>
-          <%= image_tag @user.avatar.variant(resize:'250x250').processed %>
-        <% else %>
-          <%= image_tag ("no_image.png"),size: '250x250'  %>
-        <% end %>
-        <h4 class="nickname"><strong><%=@user.nickname %>さん</strong></h4><br />
+  <div class="row">
+    <div class="card justify-content-center">
+      <div class="col-md justify-content-center pl-0 pr-0">
+        <div class=" col-md avatar-background pt-3">
+          <% if @user.avatar.attached? %>
+            <%= image_tag @user.avatar.variant(resize:'250x250').processed %>
+          <% else %>
+            <%= image_tag ("no_image.png"),size: '250x250'  %>
+          <% end %>
+          <h4 class="nickname"><strong><%=@user.nickname %>さん</strong></h4><br />
         </div>
-      <div class="card-body2">
-      <!--partialにてフォロボタン出現させる（条件分岐により本人以外）-->
-         <div class="active_follow text-center">
-         <% if user_signed_in? && @user != current_user %>
-           <%= render "following_form"  %>
-         <% end %>
-         </div>
-      <!--フォロー・フォロワー人数・リンク挿入-->
-         <div class="following text-center text-center mt-">
-          <%= link_to following_public_user_path(@user.id) do %>
-            <h6>フォロー<%= @user.following.count %>人</h6>
-          <% end %>
-         </div>
-         <div class="followers text-center">
-           <%= link_to followers_public_user_path(@user.id) do %>
-            <h6>フォロワー<%= @user.followers.count %>人</h6>
-          <% end %>
-         </div>
-         <div class="col card-title text-center">
-           <h5><span>【自己紹介】</span></h5>
-         </div>
-         <div class="card-text col-md-5 mx-auto">
-           <h4 class="profile text-center"><%=@user.profile %></h4>
-         </div>
-         <div class="row">
-           <div class="col-md-5  mx-auto">
-            <% if @user.id == current_user.id %>
-            <h5 class="text-center">-各種リンク-</h5>
-            <%= link_to "プロフィール編集", edit_public_user_path(@user) %><br />
-            <%= link_to "退会する", public_unsubscribe_path(@user) %><br />
-            <%= link_to '投稿フォーム', new_public_post_item_path(@user) %><br />
-            <%= link_to 'お気に入り一覧', public_post_item_favorites_path(@user) %>
+          <div class="card-body2">
+          <!--partialにてフォロボタン出現させる（条件分岐により本人以外）-->
+           <div class="active_follow text-center">
+           <% if user_signed_in? && @user != current_user %>
+             <%= render "following_form"  %>
+           <% end %>
            </div>
-          </div><br/>
+        <!--フォロー・フォロワー人数・リンク挿入-->
+           <div class="following text-center text-center mt-">
+            <%= link_to following_public_user_path(@user.id) do %>
+              <h6>フォロー<%= @user.following.count %>人</h6>
             <% end %>
+           </div>
+           <div class="followers text-center">
+             <%= link_to followers_public_user_path(@user.id) do %>
+              <h6>フォロワー<%= @user.followers.count %>人</h6>
+             <% end %>
+           </div>
+           <div class="col card-title text-center">
+             <h5><span>【自己紹介】</span></h5>
+           </div>
+           <div class="card-text col-md-5 mx-auto">
+             <h4 class="profile text-center"><%=@user.profile %></h4>
+           </div>
+           <div class="row">
+             <div class="col-md-5  mx-auto">
+               <% if @user.id == current_user.id %>
+               <h5 class="text-center">-各種リンク-</h5>
+               <%= link_to "プロフィール編集", edit_public_user_path(@user) %><br />
+               <%= link_to "退会する", public_unsubscribe_path(@user) %><br />
+               <%= link_to '投稿フォーム', new_public_post_item_path(@user) %><br />
+               <%= link_to 'お気に入り一覧', public_post_item_favorites_path(@user) %>
+             </div>
+           </div><br/>
+              <% end %>
+          </div>
       </div>
-       </div>
-       </div>
+    </div>
   <!--下記チャット機能（前提：@userがcurrent_userでない時のみ出現させる）-->
        <% unless @user.id == current_user.id %>
        <!--お互いがフォローしてる場合&既にチャットルームがある場合は、チャットルームボタンを出現させる-->
@@ -64,38 +64,35 @@
           <% end %>
          <% end %>
        <% end %>
-      </div>
     </div>
-  <!--<div class="col-md-7 mx-auto">-->
-    <!--<div class="container px-5 px-sm-0">-->
-      <div class="container">
-      <div class="col">
-        <h3><span>【<%= @user.nickname %>の投稿一覧】</span></h3><br />
-      </div>
-      <div class="row">
-        <% if @post_items.present? %>
-          <% @post_items.each do |post_item| %>
-            <div class="col-md-6">
-              <%= link_to  public_post_item_path(post_item.id) do %>
-              <%= image_tag post_item.images[0] ,width:250, height:250 %>
-              <% end %>
-              <p>
-              <%= link_to  public_post_item_path(post_item.id) do %>
-                  作品名：<%= post_item.name %>
-              <% end %>
-              </p>
-            </div>
+</div>
+  <div class="container">
+    <div class="col">
+      <h3><span>【<%= @user.nickname %>の投稿一覧】</span></h3><br />
+    </div>
+    <div class="row">
+      <% if @post_items.present? %>
+        <% @post_items.each do |post_item| %>
+        <div class="col-md-6">
+          <%= link_to  public_post_item_path(post_item.id) do %>
+          <%= image_tag post_item.images[0] ,width:250, height:250 %>
         <% end %>
+        <p>
+          <%= link_to  public_post_item_path(post_item.id) do %>
+          作品名：<%= post_item.name %>
+          <% end %>
+        </p>
+        </div>
+      <% end %>
       <% if @favorite_list.present? %>
         <% @favorite_list.each do |post_item| %>
           <%= post_item.name %>
         <% end %>
       <% end %>
-      </div>
-       <% end %>
-      </div>
     </div>
+      <% end %>
     </div>
-    <!--</div>-->
-  <!--</div>-->
+
+  <div>
   <%= paginate @post_items %>
+  </div>

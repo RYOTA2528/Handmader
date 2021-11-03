@@ -15,10 +15,6 @@ class User < ApplicationRecord
    validates :profile, presence: true, length: { maximum: 200 }
 end
 
-# def create?
-
-# end
-
   has_one_attached :avatar
   has_one_attached :background
   has_many_attached :images
@@ -64,19 +60,4 @@ end
   def delete_follow(user)
     following_relationships.find_by(following_id: user.id).destroy
   end
-
-#   def update_without_current_password(params, *options)
-#     params.delete(:current_password)
-
-#     if params[:password].blank? && params[:password_confirmation].blank?
-#       params.delete(:password)
-#       params.delete(:password_confirmation)
-#     end
-
-#     result = update_attributes(params, *options)
-#     clean_up_passwords
-#     result
-#   end
-
-
 end

@@ -1,18 +1,17 @@
 <html>
 <main>
-
-    <div id="container">
-      <div id="theTarget">
-        <div><%= link_to image_tag('Slide1.PNG'), new_public_post_item_path %>
-        </div>
-        <div><%= link_to image_tag('Slide2.PNG'), public_post_items_path %>
-        </div>
-        <div><%= link_to image_tag('Slide3.PNG'), ranking_public_post_items_path %>
-        </div>
+  <div id="container">
+    <div id="theTarget">
+      <div><%= link_to image_tag('Slide1.PNG'), new_public_post_item_path %>
+      </div>
+      <div><%= link_to image_tag('Slide2.PNG'), public_post_items_path %>
+      </div>
+      <div><%= link_to image_tag('Slide3.PNG'), ranking_public_post_items_path %>
       </div>
     </div>
+  </div>
   <div class="container">
-   <div class="row">
+    <div class="row">
       <div class=" p-5 text-center content col-md-6 ">
          <%= image_tag ("Welcome.png"),size: '600x300' %>
       </div>
@@ -47,9 +46,9 @@
           <h4 class="card-title text-white pt-5"><strong><br/>プロフィールを完成させよう!</strong></h4>
           <p class="card-text text-white">Complete your profile first! Thank you for your cooperation.</p><br/>
           <% if user_signed_in? %>
-          <%= link_to "マイページへ", public_user_path(current_user.id), class: "btn btn-primary my-auto" %>
+            <%= link_to "マイページへ", public_user_path(current_user.id), class: "btn btn-primary my-auto" %>
           <% else %>
-          <%= link_to "登録後マイページへ",new_user_registration_path, class: "btn btn-primary my-auto" %>
+            <%= link_to "登録後マイページへ",new_user_registration_path, class: "btn btn-primary my-auto" %>
           <% end %>
         </div>
         <div class="card-footer text-muted">
@@ -82,7 +81,6 @@
       </div>
     </div>
     <hr class="featurette-divider">
-
     <div class="row featurette pt-5 ml-3 mr-3">
       <div class="col-md-5">
       <%= image_tag ("follow.png"),size: '500x500'  %>
@@ -93,9 +91,7 @@
         <p class="lead">いい作品に巡り合えたら、クリエーターの作品をチェックしよう。<br/>クリエーターのプロフィールページには本人の稿作品が順番で並んでます。クリエーターの作品を知り、自分のハンドメイド作品に組み込みましょう!</p>
       </div>
     </div>
-
     <hr class="featurette-divider">
-
     <div class="row featurette pt-5 ml-3 mr-3">
       <div class="col-md-7">
         <h2 class="featurette-heading"><span>03</span>相互フォローでチャット機能を使おう!</h2>
@@ -106,18 +102,10 @@
       <%= image_tag ("chat.png"),size: '500x500'  %>
       </div>
     </div>
-
     <hr class="featurette-divider">
-
-    <!-- /END THE FEATURETTES -->
-
-  </div><!-- /.container -->
-
-
   <!-- FOOTER -->
   <footer class="container">
     <p class="float-end"><a href="#">トップに戻る</a></p>
-    <p> 2021 Company, Inc. ·</p>
   </footer>
 </main>
 </html>

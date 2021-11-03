@@ -1,45 +1,44 @@
  <div class="container mt-5 px-5 px-sm-0">
    <div class="row justify-content-md-center">
-   <h2><span>【<%= @user.name %>さんの詳細画面】</span></h2>
-   </div>
-   </div><br />
+     <h3><span>【<%= @user.name %>さんの詳細画面】</span></h3>
+   </div><br/>
      <div class="row justify-content-md-center">
        <h4><strong>会員ID</strong></h4>
-      <div class=offset-1>
-       <h4><%= @user.id %></h4>
-      </div>
+       <div class=offset-1>
+         <h4><%= @user.id %></h4>
+       </div>
      </div><br />
-      <div class="row justify-content-md-center">
+     <div class="row justify-content-md-center">
        <h4><strong>名前</strong></h4>
-      <div class=offset-1>
-       <h4><%= @user.name %></h4>
-      </div>
-     </div>
+       <div class=offset-1>
+         <h4><%= @user.name %></h4>
+       </div>
      </div><br />
-      <div class="row justify-content-md-center">
+     <div class="row justify-content-md-center">
        <h4><strong>ニックネーム</strong></h4>
-      <div class=offset-1>
-       <h4><%#= @user.nickname %></h4>
-      </div>
-     </div>
+       <div class=offset-1>
+         <h4><%= @user.nickname %></h4>
+       </div>
      </div><br />
-      <div class="row justify-content-md-center">
+     <div class="row justify-content-md-center">
        <h4><strong>メールアドレス</strong></h4>
-      <div class=offset-1>
-       <h4><%= @user.email %></h4>
-      </div>
-     </div>
+       <div class=offset-1>
+         <h4><%= @user.email %></h4>
+       </div>
+     </div><br/>
      <div class="row justify-content-md-center">
        <h4><strong>会員ステータス</strong></h4>
-      <div class=offset-1>
-       <h4><% if @user.is_deleted == true %>
-          <strong class="Withdrawal"> "退会" </strong>
-          <% else %>
-          <strong class="Existence"> "有効" </strong>
-          <% end %></h4>
+       <div class=offset-1>
+         <h4>
+           <% if @user.is_deleted == true %>
+             <strong class="Withdrawal"> "退会" </strong>
+           <% else %>
+             <strong class="Existence"> "有効" </strong>
+          <% end %>
+         </h4>
       </div>
      </div>
      <div class="row justify-content-md-center">
-      <%= link_to "編集ボタン", edit_admin_user_path(@user), class:"btn btn-lg btn-primary mt-4" %>
+       <%= link_to "編集ボタン", edit_admin_user_path(@user), class:"btn btn-lg btn-primary mt-4" %>
      </div>
-  </div>
+ </div>

@@ -1,58 +1,60 @@
 <p id="notice"><%= notice %></p>
-  <div class="container px-5 px-sm-0">
-    <div class="row justify-content-md-center">
-      <h2>投稿編集</h2>
-    </div><br />
+<div class="container px-5 px-sm-0">
+  <div class="row justify-content-md-center">
+    <h2>投稿編集</h2>
+  </div><br />
   <%= form_with model: @post_item, url: public_post_item_path(@post_item), method: :patch, local:true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-  <div class="container">
-    <% if @post_item.images.present? %>
-    <div class="delete_images text-center">
-      <h4><strong>✅削除したいものにはチェックを入れよう</strong></h4>
-    </div><br/>
-    <div class="row">
-      <div class="mx-auto d-flex justify-content-md-center flex-wrap">
-      <% @post_item.images.each do |image| %>
-      <% if @post_item.images.length > 1 %>
-      <%= f.check_box :image_ids, {:multiple => true}, image.id, false %>
-      <% end %>
-      <%= image_tag image, size:"250x250"%> <br>
-      <% end %>
-      </div>
-      <br/>
-    </div>
-    <div class=" text-center">
-      <h3>画像を追加する場合は登録してください</h3>
-      <%= f.file_field :images, multiple: true %>
-    </div>
-    <% end %>
-  </div>
-    <div class="row justify-content-md-center">
-      <div class="form-group">
-       <%= f.label :name, '投稿作品名' %><br />
-       <%= f.text_field :name %>
-      </div>
-    </div>
-    <div class="row justify-content-md-center">
-      <div class="form-group">
-       <%= f.label :text, '投稿作品説明文'%><br />
-       <%= f.text_area :text, rows:'10',cols:'100',placeholder: "最大文字数1000文字まででご入力ください" %><br />
-      </div>
-    </div>
-    <div class="row justify-content-md-center">
-      <div class="form-group">
-        <%= f.collection_radio_buttons :genre_ids, Genre.all, :id, :name do |genre| %>
-          <%= genre.label do %>
-          <%= genre.label { genre.radio_button }%>
-          <%= genre.text %>
+    <%= render 'layouts/error_messages', model: f.object %>
+    <div class="container">
+      <% if @post_item.images.present? %>
+      <div class="delete_images text-center">
+        <h4><strong>✅削除したいものにはチェックを入れよう</strong></h4>
+      </div><br/>
+      <div class="row">
+        <div class="mx-auto d-flex justify-content-md-center flex-wrap">
+        <% @post_item.images.each do |image| %>
+          <% if @post_item.images.length > 1 %>
+            <%= f.check_box :image_ids, {:multiple => true}, image.id, false %>
           <% end %>
+          <%= image_tag image, size:"250x250"%> <br>
         <% end %>
       </div>
-    </div>
-    <div class="row justify-content-md-center">
-      <div class="form-group">
-        <%= f.submit '更新' %>
+      <br/>
       </div>
+      <div class=" text-center">
+        <h3>画像を追加する場合は登録してください</h3>
+        <%= f.file_field :images, multiple: true %>
+      </div>
+      <% end %>
     </div>
-  <% end %>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="form-group">
+          <%= f.label :name, '投稿作品名' %><br />
+          <%= f.text_field :name %>
+        </div>
+      </div>
+      <div class="row justify-content-md-center">
+        <div class="form-group">
+          <%= f.label :text, '投稿作品説明文'%><br />
+          <%= f.text_area :text, rows:'10',cols:'100',placeholder: "最大文字数1000文字まででご入力ください" %><br />
+        </div>
+      </div>
+      <div class="row justify-content-md-center">
+        <div class="form-group">
+          <%= f.collection_radio_buttons :genre_ids, Genre.all, :id, :name do |genre| %>
+            <%= genre.label do %>
+              <%= genre.label { genre.radio_button }%>
+              <%= genre.text %>
+            <% end %>
+         <% end %>
+        </div>
+      </div>
+      <div class="row justify-content-md-center">
+        <div class="form-group">
+          <%= f.submit '更新' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
 </div>

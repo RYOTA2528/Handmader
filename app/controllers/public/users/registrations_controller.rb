@@ -64,8 +64,4 @@ class Public::Users::RegistrationsController < Devise::RegistrationsController
     edit_public_user_path(current_user)
   end
 
-  # def update_resource(resource, params)
-  #   resource.update_without_current_password(params)
-  # end
-
 end

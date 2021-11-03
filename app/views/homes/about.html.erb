@@ -1,9 +1,9 @@
+<html>
 <div class="body">
-<div class="container px-5 px-sm-0">
+ <div class="container px-5 px-sm-0">
   <div class= "justify-content-center">
-    <div class="text-center">
-    <br />
-    <strong><span class="shadow">～Handmaderへようこそ～</span></strong>
+    <div class="text-center"><br />
+      <strong><span class="shadow">～Handmaderへようこそ～</span></strong>
     </div><br />
     <div class="text-center">
       <h6>皆さん、ハンドメイドは一人でこなす作業だと思われていませんか？？</h6>
@@ -11,41 +11,47 @@
       <h6>そんな日々の中で、作品へのアイデアが思いつかずつい…『あー誰かと相談できたらいいのにな...』</h6>
       <h6>なんて考えることが多々あります。</h6>
       <p>外出自粛が余技なくされ人と人とのコミュニケーションが取りづらい世の中で<br />
-      サイトを介し他のクリエーターと話題を共有できる場所があればと考えていました。<br /></p>
+       サイトを介し他のクリエーターと話題を共有できる場所があればと考えていました。<br /></p>
     </div>
     <div class="text-center">
-     <div class="chat">
-       <i class="far fa-comment"></i>
-     </div>
-      <h5>①当サイトでは自作ハンドメイド作品の投稿及び他クリエーターとの交流が<strong>コメント機能</strong>を通じ可能です。</h5>
-     <div class="message">
-       <i class="fas fa-envelope-square"></i>
-     </div>
-      <h5>②<strong>メッセージ機能</strong>を通じて、共同制作など自由なメッセージもお送りしていただけます！</h5>
-      <h5>メッセージをお送りすることでて可能なサイトです！</h5>
-     <div class="idea">
-       <i class="fas fa-lightbulb"></i>
-     </div>
-      <h5>③潜在している他クリエーターの作品とその作品に対する思いを知ることで日々インスピレーションを受け</h5>
-      <h5>作品の質を高めてくれます！</h5>
+      <div class="chat">
+        <i class="far fa-comment"></i>
+      </div>
+        <div class="text-center">
+          <h5>①当サイトでは自作ハンドメイド作品の投稿及び他クリエーターとの交流が<strong>コメント機能</strong>を通じ可能です。</h5>
+        </div>
+      <div class="message">
+        <i class="fas fa-envelope-square"></i>
+      </div>
+        <div class="text-center">
+          <h5>②<strong>メッセージ機能</strong>を通じて、共同制作など自由なメッセージもお送りしていただけます！</h5>
+          <h5>メッセージをお送りすることでて可能なサイトです！</h5>
+        </div>
+      <div class="idea">
+        <i class="fas fa-lightbulb"></i>
+      </div>
+        <div class="text-center">
+          <h5>③潜在している他クリエーターの作品とその作品に対する思いを知ることで日々インスピレーションを受け</h5>
+          <h5>作品の質を高めてくれます！</h5>
+        </div>
     </div><br />
-   <div class="row justify-content-center">
-     <h5><strong>まだ新規登録がお済みでない方はこちらから👇</strong><%= link_to "新規登録", new_user_registration_path, class: "btn btn-lg btn-info mt-4 col"%></h5><br />
-   </div>
-   <div class="row justify-content-center">
-    <h5><strong>既にご登録済みの方はこちらから→</strong><%= link_to "【ログイン】", new_user_session_path, class: "login mt-4 col"%></h5>
-   </div>
-   <br />
-   <div class="row offset-1">
-     <div class="col">
-       <%= link_to "ホームページを見に行こう！",  top_path, class: "button " %>
-     </div>
-     <div class="col">
-       <%= link_to  "みんなの作品を見に行こう！",  public_post_items_path, class: "button" %>
-       <br/>
-       <br/>
-     </div>
-   </div>
+    <div class="row justify-content-center">
+      <h5><strong>まだ新規登録がお済みでない方はこちらから👇</strong><%= link_to "新規登録", new_user_registration_path, class: "btn btn-lg btn-info mt-4 col"%></h5><br />
+    </div>
+    <div class="row justify-content-center">
+      <h5><strong>既にご登録済みの方はこちらから→</strong><%= link_to "【ログイン】", new_user_session_path, class: "login mt-4 col"%></h5>
+    </div><br />
+    <div class="row offset-1">
+      <div class="col">
+        <%= link_to "ホームページを見に行こう！",  top_path, class: "button " %>
+      </div>
+      <div class="col">
+        <%= link_to  "みんなの作品を見に行こう！",  public_post_items_path, class: "button" %>
+        <br/>
+        <br/>
+      </div>
+    </div>
+  </div>
  </div>
 </div>
-</div>
+</html>

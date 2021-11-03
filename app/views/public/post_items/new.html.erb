@@ -1,30 +1,30 @@
 <p id="notice"></p>
-  <div class="container px-5 px-sm-0">
+ <div class="container px-5 px-sm-0">
     <div class="row justify-content-md-center">
       <h2>投稿</h2>
     </div><br />
     <% if @post_item.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger">
-    <ul>
-      <% @post_item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+    <div id="error_explanation" class="alert alert-danger">
+      <ul>
+        <% @post_item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
   <%= form_with model: @post_item, url: public_post_items_path, method: :post, local:true do |f| %>
-  <%= f.hidden_field :post_item_id, value: @post_item.id %>
+    <%= f.hidden_field :post_item_id, value: @post_item.id %>
     <div class="row justify-content-md-center">
       <div class="form-group text-center col-md-3">
-    <strong><%= f.label :images, '【画像を投稿する】' %></strong>
-       <%= f.file_field :images, multiple: true %>
-
+        <strong><%= f.label :images, '【画像を投稿する】' %></strong>
+        <%= f.file_field :images, multiple: true %>
       </div>
     </div>
     <div class="row justify-content-md-center">
       <div class="form-group text-center">
-       <strong><%= f.label :name, '【投稿作品名】' %></strong><br />
-       <%= f.text_field :name %>
+        <strong><%= f.label :name, '【投稿作品名】' %></strong><br />
+        <%= f.text_field :name %>
       </div>
     </div>
     <div class="row justify-content-md-center text-center">
@@ -38,12 +38,12 @@
         <div class="row justify-content-md-center">
           <strong><%= f.label :genre, 'ジャンル選択欄' %></strong>
         </div>
-        <%= f.collection_radio_buttons :genre_ids, Genre.all, :id, :name do |genre| %>
-          <%= genre.label do %>
-          <%= genre.label { genre.radio_button }%>
-          <%= genre.text %>
+          <%= f.collection_radio_buttons :genre_ids, Genre.all, :id, :name do |genre| %>
+            <%= genre.label do %>
+            <%= genre.label { genre.radio_button }%>
+            <%= genre.text %>
+            <% end %>
           <% end %>
-        <% end %>
       </div>
     </div>
     <div class="row justify-content-md-center">
@@ -52,4 +52,4 @@
       </div>
     </div>
   <% end %>
-</div>
+ </div>
