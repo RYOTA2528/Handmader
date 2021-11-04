@@ -7,7 +7,7 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to admin_genres_path(@genre)
+      redirect_to admin_genres_path
       flash[:notice]='新たにジャンルが登録されました。'
     else
       render "admin/genres/new"
@@ -25,7 +25,7 @@ class Admin::GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-      redirect_to admin_genres_path(@genres)
+      redirect_to admin_genres_path
       flash[:notice]='ジャンルが変更されました。'
     else
       render :edit
