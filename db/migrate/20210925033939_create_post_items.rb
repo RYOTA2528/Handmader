@@ -1,8 +1,8 @@
 class CreatePostItems < ActiveRecord::Migration[5.2]
   def change
     create_table :post_items do |t|
-      t.integer "genre_id", null: false
-      t.integer "user_id", null: false
+      t.bigint "genre_id", null: false
+      t.bigint "user_id", null: false
       t.string "name", null: false
       t.text "text", null: false
       t.datetime "created_at", null: false
