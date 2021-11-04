@@ -16,6 +16,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require skippr.min
+//= require slick
 //= require_tree .
 /*global $*/
 $(document).ready(function () {
@@ -42,4 +43,4 @@ $(document).ready(function () {
     hidePrevious : false
   });
 });
-require("./slick")
+// require("./slick")
