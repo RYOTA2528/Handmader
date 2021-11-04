@@ -51,31 +51,31 @@ ActiveRecord::Schema.define(version: 2021_10_06_111604) do
   end
 
   create_table "chats", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "chat_room_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "chat_room_id", null: false
     t.text "chat", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_item_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "post_item_id", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "entries", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "chat_room_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "chat_room_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_item_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "post_item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(version: 2021_10_06_111604) do
   end
 
   create_table "post_item_genres", force: :cascade do |t|
-    t.integer "genre_id", null: false
-    t.integer "post_item_id", null: false
+    t.bigint "genre_id", null: false
+    t.bigint "post_item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
