@@ -15,7 +15,7 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require skipper.min
+//= require skippr.min
 //= require_tree .
 /*global $*/
 $(document).ready(function () {
