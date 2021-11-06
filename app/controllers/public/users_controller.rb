@@ -3,7 +3,6 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @user = current_user
     @post_items = @user.post_items
     @comments =Comment.all
     # PostImageモデル作成後の記述。下記で現在のユーザーの投稿のみを取得できる
