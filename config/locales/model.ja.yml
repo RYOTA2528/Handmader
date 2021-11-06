@@ -14,7 +14,10 @@ ja:
         nickname: ユーザーニックネーム
         email: メールアドレス
         password: パスワード
-        
+
   devise:
+    passwords:
+      user:
+        updated: "変更しました"
     sessions:
       signed_in: "Signed in successfully."
