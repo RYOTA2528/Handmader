@@ -21,7 +21,6 @@ class Public::PostItemsController < ApplicationController
 
   def show
     @post_item = PostItem.find(params[:id])
-    @post_items = PostItem.where(user_id: current_user.id).where.not(image: nil)
     @comment = Comment.new
   end
 
