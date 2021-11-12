@@ -35,7 +35,6 @@ class Public::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(current_user.id)
     @user = current_user
     if @user.update(user_params)
       redirect_to public_user_path(@user.id)
